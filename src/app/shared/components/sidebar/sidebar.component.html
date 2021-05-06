@@ -1,0 +1,66 @@
+<div class="nav-item">
+    <mat-nav-list>
+    <div class="profil-card">
+      <div class="header">
+        <h2>Sen Resto</h2>
+        <h4>senresto@gmail.com</h4>
+      </div>
+      <img src="../../../assets/img/senresto.jpg" alt="Image de profil" class="rounded-circle">
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="multi-level">
+      <div class="item" >
+        <input type="checkbox"  id="Dashboard">
+        <div class="test">
+          <a routerLinkActive="list-item-active"  routerLink="/dashboard"><label class="d-flex align-items-center"for="Dashboard"><mat-icon>dashboard</mat-icon><span>Dashboard</span></label></a>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="item"  >
+        <input type="checkbox"  id="menu">
+        <div class="test">
+          <label class="d-flex align-items-center" for="menu"><mat-icon>folder</mat-icon><span>Menu</span></label>
+        </div>
+        <ul>
+            <li><a routerLinkActive="list-item-active" class="d-flex align-items-center item-a" routerLink="/dashboard/menu/add"><mat-icon>add_box</mat-icon><span>Ajouter</span> </a></li>
+            <li><a routerLinkActive="list-item-active" class="d-flex align-items-center item-a" routerLink="/dashboard/menu/list"><mat-icon>list</mat-icon><span>Lister</span> </a></li>
+        </ul>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="item"  >
+        <input type="checkbox"  id="plat">
+        <div class="test">
+        <label class="d-flex align-items-center" for="plat"><mat-icon>folder</mat-icon><span>Plat</span></label>
+        </div>
+        <ul>
+          <li><a routerLinkActive="list-item-active" class="d-flex align-items-center item-a" routerLink="/dashboard/plat/add"><mat-icon>add_box</mat-icon><span>Ajouter</span> </a></li>
+          <li><a routerLinkActive="list-item-active" class="d-flex align-items-center item-a" routerLink="/dashboard/plat/list"><mat-icon>list</mat-icon><span>Lister</span> </a></li>
+        </ul>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="item"  >
+        <input type="checkbox"  id="commande">
+        <div class="test">
+          <label class="d-flex align-items-center" for="commande"><mat-icon>folder</mat-icon><span>Commande</span></label>
+        </div>
+        <ul>
+          <li><a routerLinkActive="list-item-active" class="d-flex align-items-center item-a" routerLink="/dashboard/commande/add"><mat-icon>add_box</mat-icon><span>Ajouter</span> </a></li>
+          <li><a routerLinkActive="list-item-active" class="d-flex align-items-center item-a" routerLink="/dashboard/commande/list"><mat-icon>list</mat-icon><span>Lister</span> </a></li>
+        </ul>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="item"  >
+        <input type="checkbox"  id="reservation">
+        <div class="test">
+        <label class="d-flex align-items-center" for="reservation"><mat-icon>folder</mat-icon><span>Réservation</span></label>
+        </div>
+        <ul>
+          <li><a routerLinkActive="list-item-active" class="d-flex align-items-center item-a" routerLink="/dashboard/reservation/add"><mat-icon>add_box</mat-icon><span>Ajouter</span> </a></li>
+          <li><a routerLinkActive="list-item-active" class="d-flex align-items-center item-a" routerLink="/dashboard/reservation/list"><mat-icon>list</mat-icon><span>Lister</span> </a></li>
+        </ul>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+    </mat-nav-list>
+</div>

@@ -1,0 +1,50 @@
+.profil-card{
+  text-align: center;
+  padding: 0 20px 20px 20px;
+  img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover ;
+  }
+}
+.multi-level , .item ul, .nav-item input{
+  display: none;
+}
+.multi-level, .item input:checked ~ ul {
+  display: block;
+}
+.nav-item{
+  .nav-item ul, .nav-item li {
+    width: 100%;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 1em;
+    list-style: none;
+    text-decoration: none;
+    font-weight: 400;
+    width: 100%;
+    color: #333;
+  }
+  .item ul li{
+    list-style: none;
+    padding: 1px;
+    &:hover{
+      background-color: #ffa900;
+    }
+  }
+
+  label{
+    line-height: 40px;
+    color: #333;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    &:hover{
+      background-color: #ffa900;
+    }
+  }
+
+}
+
+mat-icon{
+  margin: 5px;
+}

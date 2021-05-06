@@ -1,0 +1,29 @@
+<mat-toolbar >
+  <mat-toolbar-row>
+    <button mat-icon-button >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>App Logo</span>
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <ul fxLayout="row" fxLayoutGap="20px">
+
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>exit_to_app </mat-icon>
+              Deconnexion
+            </button>
+            <button mat-menu-item >
+              <mat-icon>visibility</mat-icon>
+              Voir le site
+            </button>
+          </mat-menu>
+
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

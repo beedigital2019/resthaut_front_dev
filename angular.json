@@ -50,6 +50,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -114,6 +115,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -145,6 +147,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "resthaut-front"
+    }
+  },
+  "defaultProject": "resthaut-front",
+  "cli": {
+    "analytics": "1b4d3fb7-398a-4dc6-8d76-d6e887556a55"
+  }
 }

@@ -1,0 +1,18 @@
+<div class="accueil">
+ <div class="container mt-5">
+  <div class="col-md-12">
+    <div class="row" >
+      <div class="col-sm-6 col-md-4 my-2" *ngFor="let dataResto of dataResto">
+        <a [routerLink]="" routerLinkActive="router-link-active"  target="_blank" rel="noopener noreferrer">
+          <div class="card" style="width: 100%;">
+            <img src="../../../assets/img/bc.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h2 class="card-text">{{dataResto.nomResto}}</h2>
+            </div>
+          </div>
+        </a>
+       </div>
+    </div>
+  </div>
+ </div>
+</div>
