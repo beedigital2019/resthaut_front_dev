@@ -1,3 +1,4 @@
+import { LoginComponent } from './pages/login/login/login.component';
 import { AddCommandeComponent } from './pages/commande/add-commande/add-commande.component';
 import { AddMenuComponent } from './pages/menu/add-menu/add-menu.component';
 import { AddPlatComponent } from './pages/plat/add-plat/add-plat.component';
@@ -11,20 +12,22 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AccueilComponent} from './pages/accueil/accueil.component';
 import { ListCommandeComponent } from './pages/commande/list-commande/list-commande.component';
+import { LoginGuardService } from './services/helpers/login-guard.service';
 
 const routes: Routes = [
-  { path: '' ,component: AccueilComponent },
-  { path: '', component: DefaultComponent, children:
+  { path: '' , component: AccueilComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', component: DefaultComponent, canActivate: [LoginGuardService], children:
     [
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'dashboard/commande/list', component: ListCommandeComponent},
+      {path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/commande/list', component: ListCommandeComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/menu/list', component: ListMenuComponent},
-      {path: 'dashboard/plat/list', component: ListPlatComponent},
-      {path: 'dashboard/reservation/list', component: ListReservationComponent},
-      {path: 'dashboard/reservation/add', component: AddReservationComponent},
-      {path: 'dashboard/plat/add', component: AddPlatComponent},
-      {path: 'dashboard/menu/add', component: AddMenuComponent},
-      {path: 'dashboard/commande/add', component: AddCommandeComponent},
+      {path: 'dashboard/plat/list', component: ListPlatComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/reservation/list', component: ListReservationComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/reservation/add', component: AddReservationComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/plat/add', component: AddPlatComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/menu/add', component: AddMenuComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/commande/add', component: AddCommandeComponent, canActivate: [LoginGuardService]},
     ]
   },
 ];
