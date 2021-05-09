@@ -16,7 +16,8 @@ export class ListPlatComponent implements OnInit {
   dataPlats: any;
   roles: string;
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['id', 'nomPlat', 'description', 'prix', 'action'];
+  urlimg = 'data:image/png;base64,';
+  displayedColumns: string[] = ['id', 'nomPlat', 'description', 'prix', 'image', 'action'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit(): void {
@@ -27,6 +28,8 @@ export class ListPlatComponent implements OnInit {
         this.listData = new MatTableDataSource(this.dataPlats);
         this.listData.paginator = this.paginator;
         console.log(data);
+      }, error => {
+        console.log(error);
 
       });
   }

@@ -15,6 +15,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorInterceptorService } from './services/helpers/error-interceptor.service';
+import { JwtInterceptorService } from './services/helpers/jwt-interceptor.service';
+import { DefaultComponent } from './layouts/default/default.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,12 @@ import { ErrorInterceptorService } from './services/helpers/error-interceptor.se
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
+  DefaultComponent, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptorService,
+    multi: true
+  },
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
 ],
   bootstrap: [AppComponent]
 })

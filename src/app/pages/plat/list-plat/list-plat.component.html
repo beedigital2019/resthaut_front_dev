@@ -1,7 +1,7 @@
-<mat-card >
+<!-- <mat-card >
   <div class="d-flex justify-content-between">
     <h2 class="ml-2 " >La liste des plats</h2>
-    <a mat-list-item routerLinkActive="list-item-active"  routerLink="/dashboard/menu/add" class="add" >
+    <a mat-list-item routerLinkActive="list-item-active"  routerLink="/dashboard/plat/add" class="add" >
       <mat-icon class="add-user" title="Ajouter">add_circle  </mat-icon>
     </a>
   </div>
@@ -38,6 +38,13 @@
         </mat-header-cell>
       </ng-container>
 
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef  >Image </mat-header-cell>
+        <mat-header-cell *matCellDef="let dataPlats">
+          <img [src]="urlimg+dataPlats.image" alt="imageSource.image" width="100">
+        </mat-header-cell>
+      </ng-container>
+
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef  >Description</mat-header-cell>
         <mat-header-cell *matCellDef="let dataPlats">
@@ -55,4 +62,12 @@
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
-</mat-card>
+</mat-card> -->
+<h1>Hello  Worls</h1>
+<div *ngFor="let imageSource of dataPlats ">
+  <p> {{imageSource.id}} </p>
+  <p> {{imageSource.nomPlat}} </p>
+  <p> {{imageSource.description}} </p>
+  <p> {{imageSource.prix}} </p>
+  <img [src]="urlimg+imageSource.image" alt="imageSource.image" width="100">
+</div>
