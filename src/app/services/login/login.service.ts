@@ -1,5 +1,5 @@
 import { environment } from './../../../environments/environment';
-
+import jwt_decode from 'jwt-decode';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -26,9 +26,9 @@ export class LoginService {
       .pipe(map(user => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
-        console.log(user);
+        const decoder  = jwt_decode(user.token);
+        localStorage.setItem('currentUser', JSON.stringify(user));
         return user;
-
       }));
   }
   getToken() {

@@ -22,13 +22,11 @@ export class ListMenuComponent implements OnInit {
   ngOnInit(): void {
     this.ms.getAllMenu()
       .subscribe( data => {
-        this.menus.push(this.dataMenus);
-        this.dataMenus = data['hydra:member'];
-        this.listData = new MatTableDataSource(this.dataMenus);
-        this.listData.paginator = this.paginator;
-        console.log(data);
-
-      });
+      this.menus.push(this.dataMenus);
+      this.dataMenus = data['hydra:member'];
+      this.listData = new MatTableDataSource(this.dataMenus);
+      this.listData.paginator = this.paginator;
+    });
   }
 
 }

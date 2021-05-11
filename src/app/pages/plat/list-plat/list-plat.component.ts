@@ -2,6 +2,7 @@ import { PlatService } from './../../../services/plat/plat.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-plat',
@@ -9,8 +10,9 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./list-plat.component.scss']
 })
 export class ListPlatComponent implements OnInit {
+  thumbnail: any;
 
-  constructor(private ps: PlatService) { }
+  constructor(private ps: PlatService, private sanitizer: DomSanitizer) { }
 
   plats = [];
   dataPlats: any;
@@ -24,7 +26,7 @@ export class ListPlatComponent implements OnInit {
     this.ps.getAllPlat()
       .subscribe( data => {
         this.plats.push(this.plats);
-        this.dataPlats = data['hydra:member'];
+        this.dataPlats = data;
         this.listData = new MatTableDataSource(this.dataPlats);
         this.listData.paginator = this.paginator;
         console.log(data);

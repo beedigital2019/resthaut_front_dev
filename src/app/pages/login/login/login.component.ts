@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   formConnexion: FormGroup;
   errorMessage: string;
   submitted: boolean;
+  roles: any;
   constructor( private ls: LoginService, private router: Router, private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', Validators.required]
     });
-
+    this.roles = JSON.parse(localStorage.getItem('roles'));
   }
   get f() { return this.formConnexion.controls; }
   onSubmit() {
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
     };
     this.ls.login(user).subscribe(
       data => {
-        return this.router.navigate(['dashboard']);
+        this.router.navigate(['/']);
       },
       error => {
        /* this.errorMessage = 'username ou mot de passe incorrect';*/

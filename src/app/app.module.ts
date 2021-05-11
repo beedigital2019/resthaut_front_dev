@@ -1,3 +1,4 @@
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,12 +18,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorInterceptorService } from './services/helpers/error-interceptor.service';
 import { JwtInterceptorService } from './services/helpers/jwt-interceptor.service';
 import { DefaultComponent } from './layouts/default/default.component';
+import { CommonModule } from '@angular/common';
+import { AccueilComponent } from './pages/accueil/accueil.component';
+import { AddRestoComponent } from './pages/resto/add-resto/add-resto.component';
+import { ListRestoComponent } from './pages/resto/list-resto/list-resto.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-
+    AccueilComponent,
+    AddRestoComponent,
+    ListRestoComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +47,12 @@ import { DefaultComponent } from './layouts/default/default.component';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-
+    CommonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MaterialFileInputModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   providers: [
   DefaultComponent, {

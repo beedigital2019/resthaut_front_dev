@@ -1,4 +1,4 @@
-import { RestoService } from './../../services/resto.service';
+import { RestoService } from './../../services/resto/resto.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,15 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class AccueilComponent implements OnInit {
   restos = [];
   dataResto: any;
+  urlimg = 'data:image/png;base64,';
   constructor(private rs: RestoService) { }
 
   ngOnInit(): void {
     this.rs.getListResto().subscribe( data => {
-      this.restos.push(this.restos);
-      this.dataResto = data['hydra:member'];
+      this.dataResto = data;
       console.log(this.dataResto);
 
-    })
+    });
   }
 
 }

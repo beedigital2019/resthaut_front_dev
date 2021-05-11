@@ -1,13 +1,14 @@
 <div class="accueil">
- <div class="container mt-5">
-  <div class="col-md-12">
-    <div class="row" >
-      <div class="col-sm-6 col-md-4 my-2" *ngFor="let dataResto of dataResto">
-        <a [routerLink]="" routerLinkActive="router-link-active"  target="_blank" rel="noopener noreferrer">
-          <div class="card" style="width: 100%;">
-            <img src="../../../assets/img/bc.jpeg" class="card-img-top" alt="...">
+ <div class="container mt-3">
+  <div class="col-md-12 mx-auto">
+    <div class="row ">
+      <div class="col-sm-12 col-md-4 my-2 " *ngFor="let resto of dataResto;">
+        <a  routerLinkActive="router-link-active"  target="_blank" rel="noopener noreferrer">
+          <div class="card">
+            <img [src]="urlimg+resto.image" class="card-img-top card-img-resto" alt="...">
             <div class="card-body">
-              <h2 class="card-text">{{dataResto.nomResto}}</h2>
+              <h1 class="card-text"> {{resto.nomResto}} </h1>
+              <h3 class="card-text"> {{resto.description}} </h3>
             </div>
           </div>
         </a>
