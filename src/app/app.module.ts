@@ -23,6 +23,7 @@ import { AccueilComponent } from './pages/accueil/accueil.component';
 import { AddRestoComponent } from './pages/resto/add-resto/add-resto.component';
 import { ListRestoComponent } from './pages/resto/list-resto/list-resto.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     LoginComponent,
     AccueilComponent,
     AddRestoComponent,
-    ListRestoComponent
-  ],
+    ListRestoComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -53,6 +54,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MaterialFileInputModule,
     MatInputModule,
     MatSelectModule,
+    MatToolbarModule
   ],
   providers: [
   DefaultComponent, {

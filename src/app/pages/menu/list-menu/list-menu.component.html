@@ -5,6 +5,12 @@
       <mat-icon class="add-user" title="Ajouter">add_circle  </mat-icon>
     </a>
   </div>
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Recherche</mat-label>
+    <label>
+      <input matInput placeholder="Rechercher un plat" (keyup)="applyFilter($event)">
+    </label>
+  </mat-form-field>
   <mat-divider></mat-divider>
   <div class="mat-elevation-z8 mt-3" >
     <mat-table [dataSource]="listData"  >

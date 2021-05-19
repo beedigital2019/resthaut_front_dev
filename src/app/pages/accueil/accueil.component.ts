@@ -15,9 +15,6 @@ export class AccueilComponent implements OnInit {
   ngOnInit(): void {
     this.rs.getListResto().subscribe( data => {
       this.dataResto = data;
-      console.log(this.dataResto);
-
     });
   }
-
 }

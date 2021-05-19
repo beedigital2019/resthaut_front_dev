@@ -2,17 +2,23 @@
   <div class="d-flex justify-content-between">
     <h2 class="ml-2 " >La liste des plats</h2>
     <a mat-list-item routerLinkActive="list-item-active"  routerLink="/dashboard/plat/add" class="add" >
-      <mat-icon class="add-user" title="Ajouter">add_circle  </mat-icon>
+      <mat-icon class="add-user" title="Ajouter">add_circle </mat-icon>
     </a>
   </div>
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Recherche</mat-label>
+    <label>
+      <input matInput placeholder="Rechercher un plat" (keyup)="applyFilter($event)">
+    </label>
+  </mat-form-field>
   <mat-divider></mat-divider>
   <div class="mat-elevation-z8 mt-3" >
-    <mat-table [dataSource]="listData"  >
+    <mat-table [dataSource]="listData "  >
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
       <ng-container matColumnDef="action" >
         <mat-header-cell *matHeaderCellDef >ACTION</mat-header-cell  >
-        <mat-header-cell *matCellDef="let row" >
+        <mat-header-cell *matCellDef="let row " >
           <div class="d-flex justify-content-around ">
             <button mat-mini-fab color="warn" >
                 <mat-icon>border_color </mat-icon>
@@ -33,7 +39,7 @@
 
       <ng-container matColumnDef="nomPlat">
         <mat-header-cell *matHeaderCellDef  >Nom plat</mat-header-cell>
-        <mat-header-cell *matCellDef="let dataPlats">
+        <mat-header-cell *matCellDef="let dataPlats ">
           {{dataPlats.nomPlat}}
         </mat-header-cell>
       </ng-container>

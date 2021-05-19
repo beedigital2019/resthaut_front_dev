@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Plat } from 'src/app/model/plat';
 
 @Component({
   selector: 'app-list-plat',
@@ -10,13 +11,14 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./list-plat.component.scss']
 })
 export class ListPlatComponent implements OnInit {
-  thumbnail: any;
 
   constructor(private ps: PlatService, private sanitizer: DomSanitizer) { }
 
   plats = [];
   dataPlats: any;
   roles: string;
+  plat: Plat[];
+  searchValue: string;
   listData: MatTableDataSource<any>;
   urlimg = 'data:image/png;base64,';
   displayedColumns: string[] = ['id', 'nomPlat', 'description', 'prix', 'image', 'action'];
@@ -31,9 +33,11 @@ export class ListPlatComponent implements OnInit {
         this.listData.paginator = this.paginator;
         console.log(data);
       }, error => {
-        console.log(error);
-
-      });
+      console.log(error);
+    });
   }
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.listData.filter = filterValue.trim().toLowerCase();
+  }
 }

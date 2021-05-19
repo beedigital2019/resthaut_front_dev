@@ -28,5 +28,8 @@ export class ListMenuComponent implements OnInit {
       this.listData.paginator = this.paginator;
     });
   }
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.listData.filter = filterValue.trim().toLowerCase();
+  }
 }
