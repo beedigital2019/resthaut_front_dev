@@ -1,3 +1,4 @@
+import { DetailsRestoComponent } from './pages/resto/details-resto/details-resto.component';
 import { AddRestoComponent } from './pages/resto/add-resto/add-resto.component';
 import { LoginComponent } from './pages/login/login/login.component';
 import { AddCommandeComponent } from './pages/commande/add-commande/add-commande.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: '' , component: AccueilComponent },
   { path: 'login', component: LoginComponent },
   {path: 'add/resto', component: AddRestoComponent },
+  {path: 'list/resto/:id', component: DetailsRestoComponent },
   { path: '', component: DefaultComponent, canActivate: [LoginGuardService], children:
     [
       {path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuardService]},

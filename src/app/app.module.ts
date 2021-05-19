@@ -24,6 +24,7 @@ import { AddRestoComponent } from './pages/resto/add-resto/add-resto.component';
 import { ListRestoComponent } from './pages/resto/list-resto/list-resto.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { DetailsRestoComponent } from './pages/resto/details-resto/details-resto.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AccueilComponent,
     AddRestoComponent,
     ListRestoComponent,
+    DetailsRestoComponent,
     ],
   imports: [
     BrowserModule,

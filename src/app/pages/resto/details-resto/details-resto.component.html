@@ -1,0 +1,26 @@
+<!-- <div class="col-sm-12 col-md-4 my-2 ">
+    <div class="card">
+      <img [src]="urlimg+resto.image" class="card-img-top card-img-resto" width="200" height="200" alt="{{resto.nomResto}}">
+      <div class="card-body">
+        <h1 class="card-text"> {{resto.nomResto}} </h1>
+        <h3 class="card-text"> {{resto.description}} </h3>
+        <h3 class="card-text"> {{resto.adresse}} </h3>
+      </div>
+    </div>
+ </div> -->
+
+<div class="accueil">
+  <div class="container">
+    <div class="row align-items-center pt-3">
+      <div class="col-md-3">
+        <img [src]="urlimg+resto.image" class="card-img-top card-img-resto" width="100%" height="100%" alt="{{resto.nomResto}}">
+      </div>
+      <div class="col-md-9" style="color: #fff;">
+        <h1  class="display-1" > {{resto.nomResto}} </h1>
+        <h3  class="display-1" > {{resto.description}} </h3>
+        <h4> <mat-icon>gps_fixed</mat-icon>  {{resto.adresse}} </h4>
+      </div>
+    </div>
+  </div>
+  <mat-divider style="background-color: #fff;"></mat-divider>
+</div>

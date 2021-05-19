@@ -9,7 +9,7 @@
   <div class="col-md-12 mx-auto">
     <div class="row ">
       <div class="col-sm-12 col-md-4 my-2 " *ngFor="let resto of dataResto;">
-        <a  routerLinkActive="router-link-active"  target="_blank" rel="noopener noreferrer">
+        <a [routerLink]="['/list/resto/', resto.id]" routerLinkActive="router-link-active"  rel="noopener noreferrer">
           <div class="card">
             <img [src]="urlimg+resto.image" class="card-img-top card-img-resto" alt="...">
             <div class="card-body">
