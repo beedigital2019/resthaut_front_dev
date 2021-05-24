@@ -25,15 +25,28 @@
       font-size: 1.8em;
       padding: 2px;
       text-transform:capitalize;
-      mat-icon{
-      //padding: 5px 10px;
-      }
     }
   }
   .menu{
     width: 100%;
-    height: 100vmin;
-    padding: 20px;
-    background-color: #e4c880;
+    height:100%;
+    border-radius: 30px;
+    padding: 20px 0;
+    background: linear-gradient(190deg,  #e4c880, 50%, transparent 100%);
+    //background-color: #e4c880;
+    .mat-tab-group {
+      margin-bottom: 48px;
+    }
+    width: 100%;
+    .menu-titre {
+      background-color: rgb(248, 151, 4);
+      color: #fff;
+      h2{
+        padding: 10px;
+        font-weight: bold;
+        font-size: 1.6em;
+      }
+    }
+
   }
 }

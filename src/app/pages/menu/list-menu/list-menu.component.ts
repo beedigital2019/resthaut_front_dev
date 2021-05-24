@@ -16,14 +16,17 @@ export class ListMenuComponent implements OnInit {
   dataMenus: any;
   roles: string;
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['id', 'categorie', 'action'];
+  urlimg = 'data:image/png;base64,';
+  displayedColumns: string[] = ['id', 'categorie', 'image', 'action'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit(): void {
     this.ms.getAllMenu()
       .subscribe( data => {
       this.menus.push(this.dataMenus);
-      this.dataMenus = data['hydra:member'];
+      this.dataMenus = data;
+      console.log(data);
+
       this.listData = new MatTableDataSource(this.dataMenus);
       this.listData.paginator = this.paginator;
     });

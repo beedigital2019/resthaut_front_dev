@@ -43,6 +43,12 @@
           {{dataMenus.categorie}}
         </mat-header-cell>
       </ng-container>
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef  >Image</mat-header-cell>
+        <mat-header-cell *matCellDef="let dataMenus">
+          <img [src]="urlimg+dataMenus.image" alt=" {{dataMenus.categorie}} " width="100" height="100">
+        </mat-header-cell>
+      </ng-container>
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>

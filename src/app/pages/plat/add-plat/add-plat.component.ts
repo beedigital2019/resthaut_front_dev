@@ -16,48 +16,35 @@ export class AddPlatComponent implements OnInit {
   formPlat: FormGroup;
   menus: any;
   submitted = false;
-  selectedFile: any;
-  uploadData: FormData;
-  readonly maxSize = 104857600;
+  urlimg = 'data:image/png;base64,';
   ngOnInit(): void {
     this.formPlat = this.formBuilder.group({
       nomPlat: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
       prix: ['', [Validators.required]],
       menu: ['', Validators.required],
-      image: ['', Validators.required],
     });
     this.ms.getAllMenu().subscribe( data => {
-      this.menus = data['hydra:member'];
-      });
+      this.menus = data;
+      console.log(data);
+    });
 
   }
-  onFileSelected($event){
-    if ($event.target.files.length > 0) {
-      this.selectedFile = $event.target.files[0];
-      this.formPlat.get('image').setValue(this.selectedFile);
-    }
-  }
+
   onSubmitForm(){
     this.submitted = true;
-    if (this.formPlat.invalid) {
-      return;
-    }
-    this.uploadData = new FormData();
-    this.uploadData.append('image', this.selectedFile, this.selectedFile.name);
-    this.uploadData.append('nomPlat', this.formPlat.value.nomPlat);
-    this.uploadData.append('description', this.formPlat.value.description);
-    this.uploadData.append('prix', this.formPlat.value.prix);
-    this.uploadData.append('menu', this.formPlat.value.menu);
-    console.log(this.uploadData);
+    // if (this.formPlat.invalid) {
+    //   return;
+    // }
+    const  plats = {
+      nomPlat: this.formPlat.value.nomPlat,
+      description: this.formPlat.value.description,
+      prix: this.formPlat.value.prix,
+      menu: this.formPlat.value.menu
+    };
+    console.log(plats);
 
-    // const  plats = {
-    //   nomPlat: this.formPlat.value.nomPlat,
-    //   description: this.formPlat.value.description,
-    //   prix: this.formPlat.value.prix,
-    //   menu: this.formPlat.value.menu
-    // };
-    this.ps.postPlat(this.uploadData).subscribe( data => {
+    this.ps.postPlat(plats).subscribe( data => {
       alert('Votre plat a été bien ajouté ');
       return this.router.navigate(['dashboard/plat/list']);
     });

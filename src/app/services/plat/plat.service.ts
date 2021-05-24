@@ -12,7 +12,12 @@ export class PlatService {
 
   getAllPlat(): Observable<any[]>  {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-    return this.http.get<any[]>(`${environment.apiUrl}/api/plat/list`, {headers}
+    return this.http.get<any[]>(`${environment.apiUrl}/api/plats`, {headers}
+    );
+  }
+  getAllPlatByRestoId(id): Observable<any[]>  {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.get<any[]>(`${environment.apiUrl}/api/plat/list/` + id, {headers}
     );
   }
   // tslint:disable-next-line: typedef

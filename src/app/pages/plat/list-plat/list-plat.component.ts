@@ -20,15 +20,14 @@ export class ListPlatComponent implements OnInit {
   plat: Plat[];
   searchValue: string;
   listData: MatTableDataSource<any>;
-  urlimg = 'data:image/png;base64,';
-  displayedColumns: string[] = ['id', 'nomPlat', 'description', 'prix', 'image', 'action'];
+  displayedColumns: string[] = ['id', 'nomPlat', 'description', 'prix', 'action'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit(): void {
     this.ps.getAllPlat()
       .subscribe( data => {
         this.plats.push(this.plats);
-        this.dataPlats = data;
+        this.dataPlats = data['hydra:member'];
         this.listData = new MatTableDataSource(this.dataPlats);
         this.listData.paginator = this.paginator;
         console.log(data);

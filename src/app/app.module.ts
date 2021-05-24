@@ -25,6 +25,8 @@ import { ListRestoComponent } from './pages/resto/list-resto/list-resto.componen
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { DetailsRestoComponent } from './pages/resto/details-resto/details-resto.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { DetailsRestoComponent } from './pages/resto/details-resto/details-resto
     MaterialFileInputModule,
     MatInputModule,
     MatSelectModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTabsModule,
+    MatRadioModule
   ],
   providers: [
   DefaultComponent, {

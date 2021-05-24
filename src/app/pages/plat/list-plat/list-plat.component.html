@@ -44,13 +44,6 @@
         </mat-header-cell>
       </ng-container>
 
-      <ng-container matColumnDef="image">
-        <mat-header-cell *matHeaderCellDef  >Image </mat-header-cell>
-        <mat-header-cell *matCellDef="let dataPlats">
-          <img [src]="urlimg+dataPlats.image" alt="imageSource.image" width="100">
-        </mat-header-cell>
-      </ng-container>
-
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef  >Description</mat-header-cell>
         <mat-header-cell *matCellDef="let dataPlats">

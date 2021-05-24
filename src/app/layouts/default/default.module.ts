@@ -1,3 +1,4 @@
+import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AddCommandeComponent } from './../../pages/commande/add-commande/add-commande.component';
 import { AddPlatComponent } from './../../pages/plat/add-plat/add-plat.component';
@@ -55,7 +56,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatSelectModule,
     MatFormFieldModule,
     MaterialFileInputModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatRadioModule
   ]
 })
 export class DefaultModule { }
