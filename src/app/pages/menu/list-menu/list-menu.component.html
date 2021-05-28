@@ -20,11 +20,11 @@
         <mat-header-cell *matHeaderCellDef >ACTION</mat-header-cell  >
         <mat-header-cell *matCellDef="let row" >
           <div class="d-flex justify-content-around ">
-              <button mat-menu-item >
+              <button mat-menu-item (click)="putMenu(row.id)" >
                 <mat-icon>border_color </mat-icon>
               </button>
               <br>
-              <button mat-menu-item>
+              <button mat-menu-item (click)="deleteMenu(row.id)">
                 <mat-icon>delete</mat-icon>
               </button>
           </div>
@@ -41,12 +41,6 @@
         <mat-header-cell *matHeaderCellDef  >Description</mat-header-cell>
         <mat-header-cell *matCellDef="let dataMenus">
           {{dataMenus.categorie}}
-        </mat-header-cell>
-      </ng-container>
-      <ng-container matColumnDef="image">
-        <mat-header-cell *matHeaderCellDef  >Image</mat-header-cell>
-        <mat-header-cell *matCellDef="let dataMenus">
-          <img [src]="urlimg+dataMenus.image" alt=" {{dataMenus.categorie}} " width="100" height="100">
         </mat-header-cell>
       </ng-container>
     </mat-table>

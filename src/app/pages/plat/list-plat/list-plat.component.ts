@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlatService } from './../../../services/plat/plat.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
@@ -12,7 +13,9 @@ import { Plat } from 'src/app/model/plat';
 })
 export class ListPlatComponent implements OnInit {
 
-  constructor(private ps: PlatService, private sanitizer: DomSanitizer) { }
+  constructor(private ps: PlatService,
+              private router: Router ,
+              private sanitizer: DomSanitizer) { }
 
   plats = [];
   dataPlats: any;
@@ -27,16 +30,28 @@ export class ListPlatComponent implements OnInit {
     this.ps.getAllPlat()
       .subscribe( data => {
         this.plats.push(this.plats);
-        this.dataPlats = data['hydra:member'];
+        this.dataPlats = data;
         this.listData = new MatTableDataSource(this.dataPlats);
         this.listData.paginator = this.paginator;
         console.log(data);
       }, error => {
       console.log(error);
     });
+
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.listData.filter = filterValue.trim().toLowerCase();
+  }
+  deleteMenu(id: number) {
+    if ( confirm('Etes vous  sur de vouloir supprimer cet plat')) {
+      this.ps.deletePlat(id).subscribe(data => {
+        console.log(data);
+        location.reload();
+      });
+    }
+  }
+  getId(id: number) {
+    this.router.navigate(['/dashboard/menu/edit', id]);
   }
 }

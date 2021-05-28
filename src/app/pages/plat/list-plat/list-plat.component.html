@@ -20,11 +20,11 @@
         <mat-header-cell *matHeaderCellDef >ACTION</mat-header-cell  >
         <mat-header-cell *matCellDef="let row " >
           <div class="d-flex justify-content-around ">
-            <button mat-mini-fab color="warn" >
+            <button mat-mini-fab color="warn" routerLink="/dashboard/plat/edit/{{row.id}}" >
                 <mat-icon>border_color </mat-icon>
               </button>
               <br>
-              <button mat-menu-item>
+              <button mat-menu-item (click)="deleteMenu(row.id)" >
                 <mat-icon>delete</mat-icon>
               </button>
           </div>

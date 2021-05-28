@@ -1,5 +1,5 @@
 <div class="card container"  >
-  <h2 class="mt-3" >Ajouter un menu</h2>
+  <h2 class="mt-3" >Modifier un plat</h2>
   <div style="overflow:auto; margin-bottom: 30px">
     <div class="mat-elevation-z8" >
       <mat-divider></mat-divider>
@@ -34,30 +34,29 @@
           </label>
           <mat-error *ngIf="submitted && f.prix.errors" class="invalid-feedback">
             <mat-error *ngIf="f.prix.errors.required">Veuillez taper le prix </mat-error>
-            <mat-error *ngIf="f.prix.errors.pattern">Le prix doit contenir seulement des chiffres </mat-error>
+            <!-- <mat-error *ngIf="f.prix.errors.minlength">Le mot de passe doit contenir au minimu 5 caractères </mat-error> -->
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Veuillez choisir un image</mat-label>
-          <ngx-mat-file-input formControlName="image" (change)="onFileSelected($event)" placeholder="Basic outline placeholder" ></ngx-mat-file-input>
-          <mat-icon matSuffix>photo_camera</mat-icon>
-          <mat-error *ngIf="submitted && f.image.errors" class="invalid-feedback">
-            <mat-error *ngIf="f.image.errors.required">Veuillez choisir un image </mat-error>
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Choisir un menu</mat-label>
-          <mat-select formControlName="menu" >
-            <mat-option *ngFor="let menu of menus" [value]="menu.id">
-              <p>{{menu.categorie}} </p>
-            </mat-option>
-          </mat-select>
+        <label class="mb-2" id="menu">Choisir un menu</label><br>
+        <mat-divider></mat-divider>
+        <mat-radio-group class="mt-2 " aria-labelledby="menu" formControlName="menu" >
+          <mat-radio-button class="mt-2 mx-2"  *ngFor="let menu of menus" value="{{menu.id}}" >
+            <!-- <p>{{menu.categorie}} </p>
+            <img [src]="urlimg+menu.image" alt="{{menu.categorie}}" width="100"> -->
+            <mat-card >
+              <mat-card-header>
+                <mat-card-title>{{menu.categorie}}</mat-card-title>
+              </mat-card-header>
+              <img mat-card-image [src]="urlimg+menu.image" width="80" alt="{{menu.categorie}}">
+
+            </mat-card>
+
+          </mat-radio-button>
           <mat-error *ngIf="submitted && f.menu.errors" class="invalid-feedback">
             <mat-error *ngIf="f.menu.errors.required">Veuillez choisir un menu </mat-error>
           </mat-error>
-        </mat-form-field>
-
-      <button mat-flat-button class="btn-ang mt-3"  type="submit"  (click)="onSubmitForm()" >Enrégistrer</button>
+        </mat-radio-group>
+      <button mat-flat-button class="btn-ang mt-3"  type="submit"  >Modifier</button>
   </form>
   </div>
   </div>

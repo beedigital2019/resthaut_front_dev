@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class LoginService {
 
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
+  helper = new JwtHelperService();
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -26,10 +28,15 @@ export class LoginService {
       .pipe(map(user => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
-        const decoder  = jwt_decode(user.token);
+        const decodedToken = this.helper.decodeToken(user.token);
+        localStorage.setItem('roles', JSON.stringify(decodedToken.roles));
+        localStorage.setItem('username', JSON.stringify(decodedToken.username));
+        localStorage.setItem('nomResto', JSON.stringify(decodedToken.nomResto));
+        localStorage.setItem('image', JSON.stringify(decodedToken.image));
         localStorage.setItem('currentUser', JSON.stringify(user));
         return user;
-      }));
+      })
+    );
   }
   getToken() {
     return localStorage.getItem('roles');

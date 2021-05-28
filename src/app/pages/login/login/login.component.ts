@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', Validators.required]
     });
-    this.roles = JSON.parse(localStorage.getItem('roles'));
-  }
+    }
   get f() { return this.formConnexion.controls; }
   onSubmit() {
 
@@ -35,7 +34,15 @@ export class LoginComponent implements OnInit {
     };
     this.ls.login(user).subscribe(
       data => {
-        this.router.navigate(['/']);
+        this.roles = JSON.parse(localStorage.getItem('roles'));
+        if (this.roles["0"] == 'ROLE_GERANT'){
+
+          this.router.navigate(['/dashboard']);
+        } else if (this.roles["0"] == 'ROLE_ADMIN') {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate(['/']);
+        }
       },
       error => {
        /* this.errorMessage = 'username ou mot de passe incorrect';*/

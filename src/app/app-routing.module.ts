@@ -1,3 +1,4 @@
+import { EditPlatComponent } from './pages/plat/edit-plat/edit-plat.component';
 import { DetailsRestoComponent } from './pages/resto/details-resto/details-resto.component';
 import { AddRestoComponent } from './pages/resto/add-resto/add-resto.component';
 import { LoginComponent } from './pages/login/login/login.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
       {path: 'dashboard/reservation/add', component: AddReservationComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/plat/add', component: AddPlatComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/menu/add', component: AddMenuComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/plat/edit/:id', component: EditPlatComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/commande/add', component: AddCommandeComponent, canActivate: [LoginGuardService]},
     ]
   },

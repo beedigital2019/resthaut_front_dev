@@ -1,7 +1,6 @@
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,6 +26,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { DetailsRestoComponent } from './pages/resto/details-resto/details-resto.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatIconModule} from '@angular/material/icon';
+import { EditPlatComponent } from './pages/plat/edit-plat/edit-plat.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {MatRadioModule} from '@angular/material/radio';
     AddRestoComponent,
     ListRestoComponent,
     DetailsRestoComponent,
+    EditPlatComponent,
     ],
   imports: [
     BrowserModule,
@@ -60,7 +62,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatSelectModule,
     MatToolbarModule,
     MatTabsModule,
-    MatRadioModule
+    MatRadioModule,
   ],
   providers: [
   DefaultComponent, {

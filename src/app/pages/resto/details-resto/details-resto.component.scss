@@ -1,7 +1,5 @@
-.accueil{
-  width: 100%;
-  min-height: 100vh;
-  background: url('../../../../assets/img/imgf.jpeg') no-repeat center/cover;
+.details-resto{
+
   .bloc-img{
     img{
       width: 100%;
@@ -34,19 +32,8 @@
     padding: 20px 0;
     background: linear-gradient(190deg,  #e4c880, 50%, transparent 100%);
     //background-color: #e4c880;
-    .mat-tab-group {
-      margin-bottom: 48px;
+    .card-text{
+      margin: 10px;
     }
-    width: 100%;
-    .menu-titre {
-      background-color: rgb(248, 151, 4);
-      color: #fff;
-      h2{
-        padding: 10px;
-        font-weight: bold;
-        font-size: 1.6em;
-      }
-    }
-
   }
 }

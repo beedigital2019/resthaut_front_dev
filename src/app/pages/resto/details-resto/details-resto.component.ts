@@ -1,3 +1,4 @@
+import { MenuService } from './../../../services/menu/menu.service';
 import { PlatService } from './../../../services/plat/plat.service';
 import { RestoService } from './../../../services/resto/resto.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,10 +23,13 @@ export class DetailsRestoComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.rs.detailsResto(this.id).subscribe( data => {
       this.resto = data;
-      console.log(this.resto);
+      console.log(data);
 
     });
+    this.ps.getAllPlatByRestoId(this.id).subscribe( data => {
+      this.plats = data;
+      console.log(data);
 
+    });
   }
-
 }

@@ -10,6 +10,7 @@ export class AccueilComponent implements OnInit {
   restos = [];
   dataResto: any;
   urlimg = 'data:image/png;base64,';
+  recherche: string;
   constructor(private rs: RestoService) { }
 
   ngOnInit(): void {

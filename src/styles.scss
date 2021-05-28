@@ -2,8 +2,11 @@
 
 html, body { height: 100%; }
 body {
+  padding: 0;
   margin: 0;
+  box-sizing: border-box;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+
   mat-error{
     font-size: 1.1em;
   }
@@ -23,5 +26,9 @@ body {
       background-color:  #f0a000;
     }
   }
-
+  .accueil, .details-resto, .loginPage, .add-resto{
+    width: 100%;
+    min-height: 100vh;
+    background: url('../src/assets/img/imgf.jpeg') no-repeat center/cover;
+  }
 }
