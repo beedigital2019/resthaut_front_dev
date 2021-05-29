@@ -28,6 +28,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
 import { EditPlatComponent } from './pages/plat/edit-plat/edit-plat.component';
+import { AddPanierComponent } from './pages/panier/add-panier/add-panier.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { EditPlatComponent } from './pages/plat/edit-plat/edit-plat.component';
     ListRestoComponent,
     DetailsRestoComponent,
     EditPlatComponent,
+    AddPanierComponent,
     ],
   imports: [
     BrowserModule,

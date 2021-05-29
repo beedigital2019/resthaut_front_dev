@@ -1,3 +1,4 @@
+import { AddPanierComponent } from './pages/panier/add-panier/add-panier.component';
 import { EditPlatComponent } from './pages/plat/edit-plat/edit-plat.component';
 import { DetailsRestoComponent } from './pages/resto/details-resto/details-resto.component';
 import { AddRestoComponent } from './pages/resto/add-resto/add-resto.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {path: 'add/resto', component: AddRestoComponent },
   {path: 'list/resto/:id', component: DetailsRestoComponent },
+  {path: 'panier/:id', component: AddPanierComponent },
   { path: '', component: DefaultComponent, canActivate: [LoginGuardService], children:
     [
       {path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuardService]},
