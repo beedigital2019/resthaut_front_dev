@@ -17,6 +17,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {AccueilComponent} from './pages/accueil/accueil.component';
 import { ListCommandeComponent } from './pages/commande/list-commande/list-commande.component';
 import { LoginGuardService } from './services/helpers/login-guard.service';
+import { AddReservationClientComponent } from './pages/reservation/add-reservation-client/add-reservation-client.component';
 
 const routes: Routes = [
   { path: '' , component: AccueilComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'add/resto', component: AddRestoComponent },
   {path: 'list/resto/:id', component: DetailsRestoComponent },
   {path: 'panier/:id', component: AddPanierComponent },
+  {path: 'reservation/:id', component: AddReservationClientComponent },
   { path: '', component: DefaultComponent, canActivate: [LoginGuardService], children:
     [
       {path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuardService]},
@@ -36,6 +38,9 @@ const routes: Routes = [
       {path: 'dashboard/menu/add', component: AddMenuComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/plat/edit/:id', component: EditPlatComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/commande/add', component: AddCommandeComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/reservation/add', component: AddReservationComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/reservation/list', component: ListReservationComponent, canActivate: [LoginGuardService]},
+
     ]
   },
 ];

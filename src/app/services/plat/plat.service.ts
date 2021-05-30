@@ -10,9 +10,9 @@ export class PlatService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPlat(): Observable<any[]>  {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-    return this.http.get<any[]>(`${environment.apiUrl}/api/plat/list`, {headers}
+  getAllPlat()  {
+    // const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.get<any[]>(`${environment.apiUrl}/api/plat/list`
     );
   }
   getAllPlatByRestoId(id): Observable<any[]>  {

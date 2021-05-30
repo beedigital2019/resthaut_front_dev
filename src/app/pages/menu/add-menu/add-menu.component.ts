@@ -9,8 +9,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-menu.component.scss']
 })
 export class AddMenuComponent implements OnInit {
-  selectedFile: any;
-  uploadData: FormData;
   constructor(  private formBuilder: FormBuilder,
                 private ms: MenuService,
                 private router: Router,

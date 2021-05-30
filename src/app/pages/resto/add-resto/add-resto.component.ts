@@ -56,4 +56,5 @@ export class AddRestoComponent implements OnInit {
       return this.router.navigate(['/']);
     });
   }
+  
 }

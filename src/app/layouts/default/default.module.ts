@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatFormFieldModule,
     MaterialFileInputModule,
     MatToolbarModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDatepickerModule
   ]
 })
 export class DefaultModule { }

@@ -1,5 +1,26 @@
 .details-resto{
-
+  .btn-reserv{
+    background-color:  #ffa900;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #333;
+    margin: 5px;
+    &:hover{
+      background-color:  #f0a000;
+    }
+  }
+  .btn-panier{
+    margin: 5px;
+      background-color:  #333;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      color: #ffa900;
+      &:hover{
+        background-color:  #000;
+    }
+  }
   .bloc-img{
     img{
       width: 100%;
@@ -32,7 +53,8 @@
     padding: 20px 5px;
     background: linear-gradient(190deg,  #e4c880, 50%, transparent 100%);
     //background-color: #e4c880;
-    .btn-panier{
+
+    .btn-panier {
       background-color:  #ffa900;
       padding: 10px;
       border: none;

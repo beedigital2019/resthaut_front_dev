@@ -34,8 +34,8 @@ export class DetailsRestoComponent implements OnInit {
       //console.log(data);
 
     });
-    // this.pas.addPanier().subscribe( data => {
-    //   console.log('ok');
-    // });
+  }
+  getId(id: number) {
+    this.router.navigate(['/reservation', id]);
   }
 }

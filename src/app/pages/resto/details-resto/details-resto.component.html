@@ -11,6 +11,16 @@
           <h4> <mat-icon>phone </mat-icon>  {{resto.user.telephone}} </h4>
           <h4 class="mx-3"> <mat-icon>gps_fixed </mat-icon>  {{resto.adresse}} </h4>
         </div>
+        <div>
+          <a routerLink="/reservation/{{resto.id}}"  class="btn btn-reserv  float-right">
+            <mat-icon>subtitles</mat-icon>
+              Reserver une table
+          </a>
+          <a class="btn btn-panier  float-right">
+            <mat-icon>shopping_basket</mat-icon>
+              Voir le panier
+          </a>
+        </div>
       </div>
     </div>
   </div>

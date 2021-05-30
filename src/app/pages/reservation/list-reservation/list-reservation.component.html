@@ -1,1 +1,83 @@
-<p>list-reservation works!</p>
+<mat-card >
+  <div class="d-flex justify-content-between">
+    <h2 class="ml-2 " >La liste des reservations</h2>
+    <a mat-list-item routerLinkActive="list-item-active"  routerLink="/dashboard/plat/add" class="add" >
+      <mat-icon class="add-user" title="Ajouter">add_circle </mat-icon>
+    </a>
+  </div>
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Recherche</mat-label>
+    <label>
+      <input matInput placeholder="Rechercher un plat" (keyup)="applyFilter($event)">
+    </label>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <div class="mat-elevation-z8 mt-3" >
+    <mat-table [dataSource]="listData "  >
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
+      <ng-container matColumnDef="action" >
+        <mat-header-cell *matHeaderCellDef >ACTION</mat-header-cell  >
+        <mat-header-cell *matCellDef="let row " >
+          <div class="d-flex justify-content-around ">
+            <button mat-mini-fab color="warn" >
+                <mat-icon>border_color </mat-icon>
+              </button>
+              <br>
+              <button mat-menu-item  >
+                <mat-icon>delete</mat-icon>
+              </button>
+          </div>
+        </mat-header-cell>
+      </ng-container>
+      <ng-container matColumnDef="id" >
+        <mat-header-cell *matHeaderCellDef>Idenfiant</mat-header-cell>
+        <mat-header-cell *matCellDef="let reservations">
+          {{reservations.id}}
+        </mat-header-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nomComplet">
+        <mat-header-cell *matHeaderCellDef  >Nom complet</mat-header-cell>
+        <mat-header-cell *matCellDef="let reservations ">
+          {{reservations.nomComplet}}
+        </mat-header-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="telephone">
+        <mat-header-cell *matHeaderCellDef  >Téléphone</mat-header-cell>
+        <mat-header-cell *matCellDef="let reservations">
+          {{reservations.telephone}}
+        </mat-header-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nbPersonne">
+        <mat-header-cell *matHeaderCellDef  >Nb personne</mat-header-cell>
+        <mat-header-cell *matCellDef="let reservations">
+          {{reservations.nbPersonne}}
+        </mat-header-cell>
+      </ng-container>
+      <ng-container matColumnDef="createdAt">
+        <mat-header-cell *matHeaderCellDef  >Date</mat-header-cell>
+        <mat-header-cell *matCellDef="let reservations">
+          {{reservations.createdAt |   date:'dd-MM-yyyy'}}
+        </mat-header-cell>
+      </ng-container>
+      <ng-container matColumnDef="heure">
+        <mat-header-cell *matHeaderCellDef  >Deure</mat-header-cell>
+        <mat-header-cell *matCellDef="let reservations">
+          {{reservations.heure |   date:'hh:mm'}}
+        </mat-header-cell>
+      </ng-container>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-card>
+<!-- <h1>Hello  Worls</h1>
+<div *ngFor="let imageSource of reservations ">
+  <p> {{imageSource.id}} </p>
+  <p> {{imageSource.nomPlat}} </p>
+  <p> {{imageSource.description}} </p>
+  <p> {{imageSource.prix}} </p>
+  <img [src]="urlimg+imageSource.image" alt="imageSource.image" width="100">
+</div> -->

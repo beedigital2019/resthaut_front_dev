@@ -33,6 +33,7 @@ export class AddPlatComponent implements OnInit {
     });
     this.ms.getAllMenu().subscribe( data => {
       this.menus = data['hydra:member'];
+      console.log(this.menus);
     });
   }
   onFileSelected($event){

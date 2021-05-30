@@ -29,7 +29,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
 import { EditPlatComponent } from './pages/plat/edit-plat/edit-plat.component';
 import { AddPanierComponent } from './pages/panier/add-panier/add-panier.component';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { AddReservationClientComponent } from './pages/reservation/add-reservation-client/add-reservation-client.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { AddPanierComponent } from './pages/panier/add-panier/add-panier.compone
     DetailsRestoComponent,
     EditPlatComponent,
     AddPanierComponent,
+    AddReservationClientComponent,
     ],
   imports: [
     BrowserModule,
@@ -65,6 +68,9 @@ import { AddPanierComponent } from './pages/panier/add-panier/add-panier.compone
     MatToolbarModule,
     MatTabsModule,
     MatRadioModule,
+    MatDatepickerModule,
+    MatRippleModule,
+    MatNativeDateModule
   ],
   providers: [
   DefaultComponent, {
