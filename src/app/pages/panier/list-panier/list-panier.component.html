@@ -1,0 +1,45 @@
+<!-- <div class="col-sm-6 col-md-3 mt-4"  *ngFor="let plat of plats;">
+  <div class="border border-dark rounded p-2 clearfix">
+      <h3>
+          {{ plat.nomPlat }}
+          -
+          {{ plat.prix }}
+          FCA
+      </h3>
+      <img width="100%" height="150" class="card-img-top card-img-plat" [src]="urlimg+plat.image"  alt="Image de {{ plats.nomPlat }}">
+      <hr>
+      <a  class="btn btn-panier  float-right">
+        <mat-icon >shopping_cart</mat-icon>
+          Ajouter
+      </a>
+  </div>
+
+</div> -->
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Nom plat</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Total</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <!-- <tbody *ngFor="let plat of plats;">
+      <tr>
+        <th scope="row">{{ plat.id }}</th>
+        <td> <img width="100px" height="100px" [src]="urlimg+plat.image"  alt="Image de {{ plats.nomPlat }}">
+        </td>
+        <td>{{ plat.nomPlat }}</td>
+        <td></td>
+        <td>{{ plat.prix }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+    </tbody> -->
+  </table>
+</div>

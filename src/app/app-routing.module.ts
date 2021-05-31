@@ -1,11 +1,10 @@
-import { AddPanierComponent } from './pages/panier/add-panier/add-panier.component';
+import {  ListPanierComponent } from './pages/panier/list-panier/list-panier.component';
 import { EditPlatComponent } from './pages/plat/edit-plat/edit-plat.component';
 import { DetailsRestoComponent } from './pages/resto/details-resto/details-resto.component';
 import { AddRestoComponent } from './pages/resto/add-resto/add-resto.component';
 import { LoginComponent } from './pages/login/login/login.component';
 import { AddCommandeComponent } from './pages/commande/add-commande/add-commande.component';
 import { AddMenuComponent } from './pages/menu/add-menu/add-menu.component';
-import { AddPlatComponent } from './pages/plat/add-plat/add-plat.component';
 import { AddReservationComponent } from './pages/reservation/add-reservation/add-reservation.component';
 import { ListReservationComponent } from './pages/reservation/list-reservation/list-reservation.component';
 import { ListPlatComponent } from './pages/plat/list-plat/list-plat.component';
@@ -18,13 +17,14 @@ import {AccueilComponent} from './pages/accueil/accueil.component';
 import { ListCommandeComponent } from './pages/commande/list-commande/list-commande.component';
 import { LoginGuardService } from './services/helpers/login-guard.service';
 import { AddReservationClientComponent } from './pages/reservation/add-reservation-client/add-reservation-client.component';
+import { AddPlatComponent } from './pages/plat/add-plat/add-plat.component';
 
 const routes: Routes = [
   { path: '' , component: AccueilComponent },
   { path: 'login', component: LoginComponent },
   {path: 'add/resto', component: AddRestoComponent },
   {path: 'list/resto/:id', component: DetailsRestoComponent },
-  {path: 'panier/:id', component: AddPanierComponent },
+  {path: 'panier', component: ListPanierComponent },
   {path: 'reservation/:id', component: AddReservationClientComponent },
   { path: '', component: DefaultComponent, canActivate: [LoginGuardService], children:
     [

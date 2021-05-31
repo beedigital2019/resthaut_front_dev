@@ -4,6 +4,7 @@ import { PlatService } from './../../../services/plat/plat.service';
 import { RestoService } from './../../../services/resto/resto.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Plat } from 'src/app/model/plat';
 
 @Component({
   selector: 'app-details-resto',
@@ -14,6 +15,8 @@ export class DetailsRestoComponent implements OnInit {
   id: number;
   resto: any;
   plats: any;
+  element;
+  itemInCart: number;
   urlimg = 'data:image/png;base64,';
   constructor( private rs: RestoService,
                private route: ActivatedRoute,
@@ -26,16 +29,17 @@ export class DetailsRestoComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.rs.detailsResto(this.id).subscribe( data => {
       this.resto = data;
-      //console.log(data);
-
     });
     this.ps.getAllPlatByRestoId(this.id).subscribe( data => {
       this.plats = data;
+    });
+    this.pas.cartItem.subscribe( data => {
       //console.log(data);
-
+      this.itemInCart = data.length;
     });
   }
-  getId(id: number) {
-    this.router.navigate(['/reservation', id]);
+
+  addPanier(plat: Plat) {
+    this.pas.addCart(plat);
   }
 }

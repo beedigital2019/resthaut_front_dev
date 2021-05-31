@@ -18,7 +18,8 @@
           </a>
           <a class="btn btn-panier  float-right">
             <mat-icon>shopping_basket</mat-icon>
-              Voir le panier
+            {{ itemInCart }}
+            Voir le panier
           </a>
         </div>
       </div>
@@ -52,7 +53,7 @@
               </h3>
               <img width="100%" height="150" class="card-img-top card-img-plat" [src]="urlimg+plat.image"  alt="Image de {{ plat.nomPlat }}">
               <hr>
-              <a routerLink="/panier/{{plat.id}}"  class="btn btn-panier  float-right">
+              <a  (click)="addPanier(plat)" class="btn btn-panier  float-right">
                 <mat-icon >shopping_cart</mat-icon>
                   Ajouter
               </a>
