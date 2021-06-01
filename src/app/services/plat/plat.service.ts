@@ -15,9 +15,9 @@ export class PlatService {
     return this.http.get<any[]>(`${environment.apiUrl}/api/plat/list`
     );
   }
-  getAllPlatByRestoId(id): Observable<any[]>  {
+  getAllPlatByRestoId(id: number): Observable<any[]>  {
     // const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-    return this.http.get<any[]>(`${environment.apiUrl}/api/plat/list/` + id
+    return this.http.get<any[]>(`${environment.apiUrl}/api/plat/list/${id}`
     );
   }
   // tslint:disable-next-line: typedef

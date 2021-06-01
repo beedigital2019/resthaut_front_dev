@@ -28,18 +28,24 @@
         <th scope="col">Actions</th>
       </tr>
     </thead>
-    <!-- <tbody *ngFor="let plat of plats;">
+    <tbody *ngFor="let plat of plats;">
       <tr>
         <th scope="row">{{ plat.id }}</th>
         <td> <img width="100px" height="100px" [src]="urlimg+plat.image"  alt="Image de {{ plats.nomPlat }}">
         </td>
         <td>{{ plat.nomPlat }}</td>
-        <td></td>
+        <td>{{ plat.quantite }}</td>
         <td>{{ plat.prix }}</td>
-        <td></td>
+        <td>{{ plat.prix * plat.quantite}}</td>
         <td></td>
       </tr>
-
-    </tbody> -->
+    </tbody>
+    <tfoot>
+     <tr>
+      <td colspan="5" class="text-right" > <h3>Total:</h3> </td>
+      <td> <h3>{{ total }}</h3> </td>
+      <td></td>
+     </tr>
+    </tfoot>
   </table>
 </div>

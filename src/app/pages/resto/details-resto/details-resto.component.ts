@@ -15,7 +15,6 @@ export class DetailsRestoComponent implements OnInit {
   id: number;
   resto: any;
   plats: any;
-  element;
   itemInCart: number;
   urlimg = 'data:image/png;base64,';
   constructor( private rs: RestoService,
@@ -34,7 +33,6 @@ export class DetailsRestoComponent implements OnInit {
       this.plats = data;
     });
     this.pas.cartItem.subscribe( data => {
-      //console.log(data);
       this.itemInCart = data.length;
     });
   }

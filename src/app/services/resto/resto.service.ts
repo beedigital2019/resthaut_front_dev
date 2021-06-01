@@ -20,8 +20,8 @@ export class RestoService {
   postResto(data): Observable<any[]>  {
     return this.http.post<any[]>(`${environment.apiUrl}/api/resto/add`, data,  );
   }
-  detailsResto(id): Observable<any> {
+  detailsResto(id: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/api/resto/list/` + id);
   }
-  
+
 }

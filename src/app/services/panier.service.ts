@@ -9,27 +9,26 @@ import { Plat } from '../model/plat';
 })
 export class PanierService {
 
-  plats: Plat[];
   placehorlder = [];
   cartItem = new BehaviorSubject([]);
 
   constructor() {
     const ls = JSON.parse(localStorage.getItem('cart'));
-    this.plats = [];
     if (ls) {
       this.cartItem.next(ls);
     }
   }
+  // tslint:disable-next-line: typedef
   addCart( plat: Plat){
     const ls = JSON.parse(localStorage.getItem('cart'));
     let exist: Plat;
 
     if (ls) {
-       exist = ls.find((item) => {
+      exist = ls.find((item) => {
+        console.log(ls);
         return item.id === plat.id;
       });
     }
-
     if (exist) {
       exist.quantite++;
       localStorage.setItem('cart', JSON.stringify(ls));
@@ -44,7 +43,6 @@ export class PanierService {
         this.cartItem.next(this.placehorlder);
       }
     }
-    //console.log(this.placehorlder);
 
   }
 }

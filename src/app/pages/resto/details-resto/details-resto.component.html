@@ -16,7 +16,7 @@
             <mat-icon>subtitles</mat-icon>
               Reserver une table
           </a>
-          <a class="btn btn-panier  float-right">
+          <a routerLink="/panier" class="btn btn-panier float-right">
             <mat-icon>shopping_basket</mat-icon>
             {{ itemInCart }}
             Voir le panier
@@ -29,21 +29,7 @@
   <div class="container mt-3">
     <div class="col-md-12 mx-auto menu">
       <div class="row ">
-        <!-- <div class="col-sm-6 col-md-3 my-1 " *ngFor="let plat of plats;">
-            <div class="card grid">
-              <img [src]="urlimg+plat.image" width="100%" height="150" class="card-img-top card-img-plat" alt="...">
-              <mat-divider></mat-divider>
-              <div class="d-flex justify-content-between ">
-                <h3 class="card-text"> {{plat.nomPlat}} </h3>
-                <h3 class="card-text"> {{plat.prix}} </h3>
-              </div>
-              <button type="button" class="btn btn-ang align-items-center">
-                <mat-icon >shopping_cart</mat-icon>
-                <span> Ajouter au panier</span>
-              </button>
-            </div>
-         </div> -->
-         <div class="col-sm-6 col-md-3 mt-4" *ngFor="let plat of plats;">
+        <div class="col-sm-6 col-md-3 mt-4" *ngFor="let plat of plats;">
           <div class="border border-dark rounded p-2 clearfix">
               <h3>
                   {{ plat.nomPlat }}
@@ -53,13 +39,12 @@
               </h3>
               <img width="100%" height="150" class="card-img-top card-img-plat" [src]="urlimg+plat.image"  alt="Image de {{ plat.nomPlat }}">
               <hr>
-              <a  (click)="addPanier(plat)" class="btn btn-panier  float-right">
+              <button  (click)="addPanier(plat)" class="btn btn-panier  float-right">
                 <mat-icon >shopping_cart</mat-icon>
                   Ajouter
-              </a>
+              </button>
           </div>
-
-      </div>
+        </div>
       </div>
     </div>
   </div>
