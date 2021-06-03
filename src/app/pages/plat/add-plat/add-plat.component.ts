@@ -29,31 +29,25 @@ export class AddPlatComponent implements OnInit {
       description: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
       prix: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       menu: ['', Validators.required],
-      image: ['', Validators.required],
     });
     this.ms.getAllMenu().subscribe( data => {
       this.menus = data['hydra:member'];
       console.log(this.menus);
     });
   }
-  onFileSelected($event){
-    if ($event.target.files.length > 0) {
-      this.selectedFile = $event.target.files[0];
-      this.formPlat.get('image').setValue(this.selectedFile);
-    }
-  }
+
   onSubmitForm(){
     this.submitted = true;
     if (this.formPlat.invalid) {
       return;
     }
-    this.uploadData = new FormData();
-    this.uploadData.append('image', this.selectedFile, this.selectedFile.name);
-    this.uploadData.append('nomPlat', this.formPlat.value.nomPlat);
-    this.uploadData.append('description', this.formPlat.value.description);
-    this.uploadData.append('prix', this.formPlat.value.prix);
-    this.uploadData.append('menu', this.formPlat.value.menu);
-    this.ps.postPlat(this.uploadData).subscribe( data => {
+    const plats = {
+      nomPlat: this.formPlat.value.nomPlat,
+      description: this.formPlat.value.description,
+      prix: this.formPlat.value.prix,
+      menu: this.formPlat.value.menu,
+    };
+    this.ps.postPlat(plats).subscribe( data => {
       alert('Votre plat a été bien ajouté ');
       return this.router.navigate(['dashboard/plat/list']);
     });

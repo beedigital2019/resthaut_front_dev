@@ -1,6 +1,7 @@
 import { PanierService } from '../../../services/panier.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Plat } from 'src/app/model/plat';
 
 @Component({
   selector: 'app-list-panier',
@@ -16,11 +17,12 @@ export class ListPanierComponent implements OnInit {
   // element;
   ngOnInit(): void {
     this.plats = JSON.parse(localStorage.getItem('cart'));
+    console.log(this.plats);
+
     // tslint:disable-next-line: prefer-for-of
     this.plats.forEach((element) => {
       this.total += (element.quantite * element.prix);
     });
   }
-
 
 }

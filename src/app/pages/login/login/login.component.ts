@@ -13,7 +13,19 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
   submitted: boolean;
   roles: any;
-  constructor( private ls: LoginService, private router: Router, private formBuilder: FormBuilder ) { }
+  constructor( private ls: LoginService, private router: Router, private formBuilder: FormBuilder ) {
+    this.roles = JSON.parse(localStorage.getItem('roles'));
+    if (this.ls.currentUserValue) {
+      if (this.roles['0'] === 'ROLE_GERANT'){
+
+        this.router.navigate(['/dashboard']);
+      } else if (this.roles['0'] === 'ROLE_ADMIN') {
+        this.router.navigate(['/']);
+      } else {
+        this.router.navigate(['/']);
+      }
+    }
+  }
 
   ngOnInit() {
     this.formConnexion =  this.formBuilder.group({
@@ -35,10 +47,10 @@ export class LoginComponent implements OnInit {
     this.ls.login(user).subscribe(
       data => {
         this.roles = JSON.parse(localStorage.getItem('roles'));
-        if (this.roles["0"] == 'ROLE_GERANT'){
+        if (this.roles['0'] === 'ROLE_GERANT'){
 
           this.router.navigate(['/dashboard']);
-        } else if (this.roles["0"] == 'ROLE_ADMIN') {
+        } else if (this.roles['0'] === 'ROLE_ADMIN') {
           this.router.navigate(['/']);
         } else {
           this.router.navigate(['/']);

@@ -1,7 +1,7 @@
 <mat-card >
   <div class="d-flex justify-content-between">
     <h2 class="ml-2 " >La liste des menus</h2>
-    <a mat-list-item routerLinkActive="list-item-active"  routerLink="/dashboard/plat/add" class="add" >
+    <a mat-list-item routerLinkActive="list-item-active"  routerLink="/dashboard/menu/add" class="add" >
       <mat-icon class="add-user" title="Ajouter">add_circle  </mat-icon>
     </a>
   </div>
@@ -41,6 +41,13 @@
         <mat-header-cell *matHeaderCellDef  >Description</mat-header-cell>
         <mat-header-cell *matCellDef="let dataMenus">
           {{dataMenus.categorie}}
+        </mat-header-cell>
+      </ng-container>
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef  >Image</mat-header-cell>
+        <mat-header-cell *matCellDef="let dataMenus">
+          <img width="100" class=" card-img-plat" [src]="urlimg+dataMenus.image"  alt="Image de {{ dataMenus.categorie }}">
+
         </mat-header-cell>
       </ng-container>
     </mat-table>

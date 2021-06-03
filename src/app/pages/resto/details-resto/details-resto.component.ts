@@ -1,6 +1,5 @@
+import { MenuService } from 'src/app/services/menu/menu.service';
 import { PanierService } from './../../../services/panier.service';
-import { MenuService } from './../../../services/menu/menu.service';
-import { PlatService } from './../../../services/plat/plat.service';
 import { RestoService } from './../../../services/resto/resto.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,13 +13,13 @@ import { Plat } from 'src/app/model/plat';
 export class DetailsRestoComponent implements OnInit {
   id: number;
   resto: any;
-  plats: any;
+  menus: any;
   itemInCart: number;
   urlimg = 'data:image/png;base64,';
   constructor( private rs: RestoService,
                private route: ActivatedRoute,
                private router: Router,
-               private ps: PlatService,
+               private ms: MenuService,
                private pas: PanierService
               ) { }
 
@@ -29,8 +28,10 @@ export class DetailsRestoComponent implements OnInit {
     this.rs.detailsResto(this.id).subscribe( data => {
       this.resto = data;
     });
-    this.ps.getAllPlatByRestoId(this.id).subscribe( data => {
-      this.plats = data;
+    this.ms.getAllMenuByrestoId(this.id).subscribe( data => {
+      this.menus = data;
+      console.log(this.menus);
+
     });
     this.pas.cartItem.subscribe( data => {
       this.itemInCart = data.length;

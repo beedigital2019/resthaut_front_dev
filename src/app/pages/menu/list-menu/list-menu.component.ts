@@ -17,7 +17,8 @@ export class ListMenuComponent implements OnInit {
   dataMenus: any;
   roles: string;
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['id', 'categorie',  'action'];
+  urlimg = 'data:image/png;base64,';
+  displayedColumns: string[] = ['id', 'categorie', 'image' , 'action'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit(): void {

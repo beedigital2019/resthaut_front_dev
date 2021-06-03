@@ -17,22 +17,31 @@ export class AddMenuComponent implements OnInit {
   get f() { return this.formMenu.controls; }
   formMenu: FormGroup;
   submitted = false;
+  selectedFile: any;
+  uploadData: FormData;
 
   ngOnInit(): void {
     this.formMenu = this.formBuilder.group({
       categorie: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
+      image: ['', [Validators.required]],
     });
+  }
+  onFileSelected($event){
+    if ($event.target.files.length > 0) {
+      this.selectedFile = $event.target.files[0];
+      this.formMenu.get('image').setValue(this.selectedFile);
+    }
   }
   onSubmitForm() {
     this.submitted = true;
     if (this.formMenu.invalid) {
       return;
     }
-    const  plats = {
-      categorie: this.formMenu.value.categorie,
-    };
+    this.uploadData = new FormData();
+    this.uploadData.append('image', this.selectedFile, this.selectedFile.name);
+    this.uploadData.append('categorie', this.formMenu.value.categorie);
 
-    this.ms.postMenu(plats).subscribe( data => {
+    this.ms.postMenu(this.uploadData).subscribe( data => {
       alert('Votre menu a été bien ajouté avec success');
       return this.router.navigate(['dashboard/menu/list']);
     }, error => {

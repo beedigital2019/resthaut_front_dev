@@ -38,14 +38,6 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label>Veuillez choisir un image</mat-label>
-          <ngx-mat-file-input formControlName="image" (change)="onFileSelected($event)" placeholder="Basic outline placeholder" ></ngx-mat-file-input>
-          <mat-icon matSuffix>photo_camera</mat-icon>
-          <mat-error *ngIf="submitted && f.image.errors" class="invalid-feedback">
-            <mat-error *ngIf="f.image.errors.required">Veuillez choisir un image </mat-error>
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
           <mat-label>Choisir un menu</mat-label>
           <mat-select formControlName="menu" >
             <mat-option *ngFor="let menu of menus" [value]="menu.id">

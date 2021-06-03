@@ -11,38 +11,45 @@ export class PanierService {
 
   placehorlder = [];
   cartItem = new BehaviorSubject([]);
+  quantiteAdd = new BehaviorSubject([]);
 
   constructor() {
-    const ls = JSON.parse(localStorage.getItem('cart'));
+    const ls = this.getCartdata();
     if (ls) {
       this.cartItem.next(ls);
     }
   }
   // tslint:disable-next-line: typedef
   addCart( plat: Plat){
-    const ls = JSON.parse(localStorage.getItem('cart'));
+    const ls = this.getCartdata();
     let exist: Plat;
 
     if (ls) {
       exist = ls.find((item) => {
-        console.log(ls);
         return item.id === plat.id;
       });
     }
     if (exist) {
       exist.quantite++;
-      localStorage.setItem('cart', JSON.stringify(ls));
+      this.setCartData(ls);
     } else {
       if (ls) {
         const newData  = [...ls, plat];
-        localStorage.setItem('cart', JSON.stringify(newData));
-        this.cartItem.next(JSON.parse(localStorage.getItem('cart')));
+        this.setCartData(newData);
+        this.cartItem.next(this.getCartdata());
       } else {
         this.placehorlder.push(plat);
-        localStorage.setItem('cart', JSON.stringify(this.placehorlder));
+        this.setCartData(this.placehorlder);
         this.cartItem.next(this.placehorlder);
       }
     }
 
   }
+  setCartData(data: any){
+    localStorage.setItem('cart', JSON.stringify(data));
+  }
+  getCartdata(){
+    return JSON.parse(localStorage.getItem('cart'));
+  }
+
 }

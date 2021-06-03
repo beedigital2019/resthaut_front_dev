@@ -29,8 +29,35 @@
   <div class="container mt-3">
     <div class="col-md-12 mx-auto menu">
       <div class="row ">
-        <div class="col-sm-6 col-md-3 mt-4" *ngFor="let plat of plats;">
-          <div class="border border-dark rounded p-2 clearfix">
+        <div class="col-sm-6 col-md-6" *ngFor="let menu of menus;">
+          <div class="section-menu d-flex align-items-center">
+            <div class="section-img">
+              <img width="100" class=" card-img-plat" [src]="urlimg+menu.image"  alt="Image de {{ menu.categorie }}">
+            </div>
+            <div>
+              <h2> {{ menu.categorie }} </h2>
+            </div>
+          </div>
+          <div class=" section-plat mt-4">
+            <div *ngFor="let plat of menu.plat">
+              <div class="card p-1 my-2">
+                <div class=" d-flex justify-content-between mt-4">
+                  <h3>{{ plat.nomPlat }}</h3>
+                  <h3>
+                    <span>{{ plat.prix }} FCA</span>
+                    <span>
+                      <button  (click)="addPanier(plat)" class="btn btn-panier  float-right">
+                        <mat-icon>add_shopping_cart</mat-icon>
+                      </button>
+                    </span>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <div class="border border-dark rounded p-2 clearfix">
               <h3>
                   {{ plat.nomPlat }}
                   -
@@ -43,7 +70,7 @@
                 <mat-icon >shopping_cart</mat-icon>
                   Ajouter
               </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
