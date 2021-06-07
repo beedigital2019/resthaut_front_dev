@@ -10,7 +10,7 @@ export class MenuService {
   constructor(private http: HttpClient) { }
   getAllMenu(): Observable<any[]>  {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-    return this.http.get<any[]>(`${environment.apiUrl}/api/menus`, {headers}
+    return this.http.get<any[]>(`${environment.apiUrl}/api/menu/list`, {headers}
     );
   }
 

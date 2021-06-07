@@ -27,10 +27,10 @@ export class DetailsRestoComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.rs.detailsResto(this.id).subscribe( data => {
       this.resto = data;
+      //console.log(this.resto);
     });
     this.ms.getAllMenuByrestoId(this.id).subscribe( data => {
       this.menus = data;
-      console.log(this.menus);
 
     });
     this.pas.cartItem.subscribe( data => {

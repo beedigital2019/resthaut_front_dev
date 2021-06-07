@@ -25,8 +25,8 @@ export class ListMenuComponent implements OnInit {
     this.ms.getAllMenu()
       .subscribe( data => {
       this.menus.push(this.dataMenus);
-      this.dataMenus = data['hydra:member'];
-      console.log(data);
+      this.dataMenus = data;
+      console.log(this.dataMenus);
 
       this.listData = new MatTableDataSource(this.dataMenus);
       this.listData.paginator = this.paginator;

@@ -53,8 +53,8 @@ export class AddRestoComponent implements OnInit {
     console.log(this.uploadData);
     this.rs.postResto(this.uploadData).subscribe( data => {
       alert('Votre resto a été bien ajouté ');
-      return this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     });
   }
-  
+
 }

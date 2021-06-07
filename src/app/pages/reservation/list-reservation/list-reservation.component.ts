@@ -14,15 +14,15 @@ export class ListReservationComponent implements OnInit {
   searchValue: string;
   listData: MatTableDataSource<any>;
   reservations = [];
-  dataPlats: any;
-  displayedColumns: string[] = ['id', 'nomComplet', 'telephone', 'nbPersonne', 'createdAt', 'heure', 'action'];
+  dataReservation: any;
+  displayedColumns: string[] = ['id', 'nomComplet', 'telephone', 'createdAt', 'heure' , 'action'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   ngOnInit(): void {
     this.res.getReservationByGerant()
       .subscribe( data => {
         this.reservations.push(this.reservations);
-        this.dataPlats = data;
-        this.listData = new MatTableDataSource(this.dataPlats);
+        this.dataReservation = data;
+        this.listData = new MatTableDataSource(this.dataReservation);
         this.listData.paginator = this.paginator;
         console.log(data);
       }, error => {

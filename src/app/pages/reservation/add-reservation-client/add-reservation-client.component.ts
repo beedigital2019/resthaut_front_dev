@@ -1,6 +1,7 @@
+import { TablesService } from './../../../services/tables/tables.service';
 import { RestoService } from './../../../services/resto/resto.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 
@@ -11,46 +12,61 @@ import { ReservationService } from 'src/app/services/reservation/reservation.ser
 })
 export class AddReservationClientComponent implements OnInit {
   resto: any;
-
+  dataTables: any [];
+  selectedTable: any = [];
+  // tslint:disable-next-line: variable-name
+  _id: any;
   constructor( private res: ReservationService,
                private router: Router,
                private formBuilder: FormBuilder,
                private route: ActivatedRoute,
-               private rs: RestoService
+               private rs: RestoService,
+               private ts: TablesService
                ) { }
   reservationForm: FormGroup;
   get f() { return this.reservationForm.controls; }
   submitted = false;
   ngOnInit(): void {
     this.reservationForm = this.formBuilder.group({
-      nomComplet: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
-      nbPersonne: ['', [Validators.required, ]],
-      telephone: ['', [Validators.required, ]],
       createdAt: ['', [Validators.required, ]],
-      heure: ['', [Validators.required, ]],
+      heure: ['', [Validators.required ]],
+      tables: this.formBuilder.array([]),
     });
     this.route.params.subscribe(params => {
       this.rs.detailsResto(params.id).subscribe(data => {
         this.resto = data.id;
-        console.log(this.resto);
+
       });
     });
+    this.route.params.subscribe(params => {
+      this.ts.getAllTablesByRestoId(params.id).subscribe(data => {
+        this.dataTables  = data;
+        console.log(this.dataTables);
+
+      });
+    });
+  }
+  onChange(event){
+    let index = this.selectedTable.indexOf(event.target.value);
+    if ( index == -1){
+      this.selectedTable.push(event.target.value);
+    } else {
+      this.selectedTable.splice( index, 1);
+    }
+    console.log(this.selectedTable);
   }
   onSubmitForm() {
     this.submitted = true;
     if (this.reservationForm.invalid) {
       return;
     }
+
     const  reservations = {
-      nomComplet: this.reservationForm.value.nomComplet,
-      nbPersonne: this.reservationForm.value.nbPersonne,
-      telephone: this.reservationForm.value.telephone,
       createdAt: this.reservationForm.value.createdAt,
       heure: this.reservationForm.value.heure,
-      resto: this.resto
+      tables: this.selectedTable
     };
     console.log(reservations);
-
 
     this.res.AddReservationByClient(reservations).subscribe( data => {
       alert('Votre reservation a été bien ajouté avec success');
@@ -59,6 +75,7 @@ export class AddReservationClientComponent implements OnInit {
       console.log(error);
 
     });
+
   }
 
 }

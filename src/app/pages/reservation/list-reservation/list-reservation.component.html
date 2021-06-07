@@ -1,9 +1,7 @@
 <mat-card >
   <div class="d-flex justify-content-between">
     <h2 class="ml-2 " >La liste des reservations</h2>
-    <a mat-list-item routerLinkActive="list-item-active"  routerLink="/dashboard/plat/add" class="add" >
-      <mat-icon class="add-user" title="Ajouter">add_circle </mat-icon>
-    </a>
+
   </div>
   <mat-form-field appearance="outline" style="width: 100%;">
     <mat-label>Recherche</mat-label>
@@ -13,7 +11,7 @@
   </mat-form-field>
   <mat-divider></mat-divider>
   <div class="mat-elevation-z8 mt-3" >
-    <mat-table [dataSource]="listData "  >
+    <mat-table [dataSource]="listData"  >
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
       <ng-container matColumnDef="action" >
@@ -40,14 +38,14 @@
       <ng-container matColumnDef="nomComplet">
         <mat-header-cell *matHeaderCellDef  >Nom complet</mat-header-cell>
         <mat-header-cell *matCellDef="let reservations ">
-          {{reservations.nomComplet}}
+          {{reservations.user.nomComplet}}
         </mat-header-cell>
       </ng-container>
 
       <ng-container matColumnDef="telephone">
         <mat-header-cell *matHeaderCellDef  >Téléphone</mat-header-cell>
         <mat-header-cell *matCellDef="let reservations">
-          {{reservations.telephone}}
+          {{reservations.user.telephone}}
         </mat-header-cell>
       </ng-container>
 
@@ -73,11 +71,23 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 </mat-card>
-<!-- <h1>Hello  Worls</h1>
-<div *ngFor="let imageSource of reservations ">
-  <p> {{imageSource.id}} </p>
-  <p> {{imageSource.nomPlat}} </p>
-  <p> {{imageSource.description}} </p>
-  <p> {{imageSource.prix}} </p>
-  <img [src]="urlimg+imageSource.image" alt="imageSource.image" width="100">
-</div> -->
+
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom Complet</th>
+      <th scope="col">Téléphone</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <div *ngIf="dataReservation">
+
+    <tbody *ngFor="let reservation of dataReservation || [];">
+      <tr>
+        <td>{{ reservation.id }}</td>
+        <td>{{ reservation.user.nomComplet }}</td>
+      </tr>
+    </tbody>
+  </div>
+</table> -->

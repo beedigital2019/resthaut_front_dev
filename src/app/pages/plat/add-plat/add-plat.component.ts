@@ -31,7 +31,7 @@ export class AddPlatComponent implements OnInit {
       menu: ['', Validators.required],
     });
     this.ms.getAllMenu().subscribe( data => {
-      this.menus = data['hydra:member'];
+      this.menus = data;
       console.log(this.menus);
     });
   }

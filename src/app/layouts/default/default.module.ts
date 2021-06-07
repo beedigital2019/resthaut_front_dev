@@ -3,7 +3,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AddCommandeComponent } from './../../pages/commande/add-commande/add-commande.component';
 import { AddPlatComponent } from './../../pages/plat/add-plat/add-plat.component';
 import { AddMenuComponent } from './../../pages/menu/add-menu/add-menu.component';
-import { AddReservationComponent } from './../../pages/reservation/add-reservation/add-reservation.component';
 import { ListMenuComponent } from './../../pages/menu/list-menu/list-menu.component';
 import { ListPlatComponent } from './../../pages/plat/list-plat/list-plat.component';
 import { ListReservationComponent } from './../../pages/reservation/list-reservation/list-reservation.component';
@@ -26,6 +25,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { AddTablesComponent } from 'src/app/pages/tables/add-tables/add-tables.component';
+import { ListTablesComponent } from 'src/app/pages/tables/list-tables/list-tables.component';
+import { AddRestoComponent } from 'src/app/pages/resto/add-resto/add-resto.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -35,10 +38,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     ListMenuComponent,
     ListPlatComponent,
     ListReservationComponent,
-    AddReservationComponent,
     AddMenuComponent,
     AddPlatComponent,
     AddCommandeComponent,
+    AddTablesComponent,
+    ListTablesComponent,
+    AddRestoComponent
   ],
   imports: [
     CommonModule,
@@ -59,7 +64,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MaterialFileInputModule,
     MatToolbarModule,
     MatRadioModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatCheckboxModule
   ]
 })
 export class DefaultModule { }

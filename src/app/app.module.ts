@@ -19,7 +19,6 @@ import { JwtInterceptorService } from './services/helpers/jwt-interceptor.servic
 import { DefaultComponent } from './layouts/default/default.component';
 import { CommonModule } from '@angular/common';
 import { AccueilComponent } from './pages/accueil/accueil.component';
-import { AddRestoComponent } from './pages/resto/add-resto/add-resto.component';
 import { ListRestoComponent } from './pages/resto/list-resto/list-resto.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -32,17 +31,19 @@ import { ListPanierComponent } from './pages/panier/list-panier/list-panier.comp
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { AddReservationClientComponent } from './pages/reservation/add-reservation-client/add-reservation-client.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AccueilComponent,
-    AddRestoComponent,
     ListRestoComponent,
     DetailsRestoComponent,
     EditPlatComponent,
     ListPanierComponent,
     AddReservationClientComponent,
+
     ],
   imports: [
     BrowserModule,
@@ -70,7 +71,8 @@ import { AddReservationClientComponent } from './pages/reservation/add-reservati
     MatRadioModule,
     MatDatepickerModule,
     MatRippleModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   providers: [
   DefaultComponent, {
