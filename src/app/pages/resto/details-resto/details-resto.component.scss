@@ -1,26 +1,49 @@
 .details-resto{
-  .btn-reserv{
-    background-color:  #ffa900;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    color: #333;
-    margin: 5px;
-    &:hover{
-      background-color:  #f0a000;
+  nav.navbar{
+    background-color:#ffa900 !important;
+    a{
+      font-size: 1.7em;
+      color: #333;
+      font-weight: bold;
+
     }
-  }
-  .btn-panier{
-    margin: 5px;
-      background-color:  #333;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      color: #ffa900;
+    .btn{
+      color: #333 !important;
+      font-size: 1.2em;
+      font-weight: 500;
+      border: 1px solid #333;
+      margin: 0 3px;
       &:hover{
-        background-color:  #000;
+        background-color: #333;
+        color: #ffa900 !important;
+      }
+    }
+    .panier-count{
+      font-size: 1em;
+      margin-top: -15px;
+      border: 1px solid #fff;;
+      background-color: #fff;
+      border-radius: 100%;
+      padding: -12px 5px;
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
+
     }
   }
+  // a.nav-link{
+  //   border: 1px solid #333 !important;
+  //   color: #333 !important;
+  //   font-size: 1em !important;
+  //   font-weight: 100;
+  // }
+  // a.nav-link:hover{
+  //     color: #333 !important;
+  // }
+  div.navbar-collapse{
+      width: 100%;
+  }
+
   .bloc-img{
     img{
       width: 100%;

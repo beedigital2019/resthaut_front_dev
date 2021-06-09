@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
       data => {
         this.roles = JSON.parse(localStorage.getItem('roles'));
         if (this.roles['0'] === 'ROLE_GERANT'){
-
           this.router.navigate(['/dashboard']);
         } else if (this.roles['0'] === 'ROLE_ADMIN') {
           this.router.navigate(['/']);

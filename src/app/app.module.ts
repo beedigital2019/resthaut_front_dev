@@ -32,6 +32,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { AddReservationClientComponent } from './pages/reservation/add-reservation-client/add-reservation-client.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './pages/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +45,12 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     EditPlatComponent,
     ListPanierComponent,
     AddReservationClientComponent,
+    DialogComponent,
 
     ],
+  entryComponents: [
+    DialogComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -72,7 +78,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatDatepickerModule,
     MatRippleModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ],
   providers: [
   DefaultComponent, {
