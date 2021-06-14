@@ -56,7 +56,7 @@ export class DetailsRestoComponent implements OnInit {
   openDialog() {
     if (this.currentUserSubject.value === null) {
       const dialogRef = this.dialog.open(DialogComponent, {
-        width: '400px',
+        width: '450px',
         height : '400px',
       });
       dialogRef.afterClosed().subscribe(result => {

@@ -1,1 +1,46 @@
-<p>list-commande works!</p>
+<mat-card >
+  <div class="d-flex justify-content-between">
+    <h2 class="ml-2 " >La liste des commandes</h2>
+  </div>
+  <ng-container  *ngIf="commande.length > 0" >
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">N°commande</th>
+        <th scope="col">Nom complet</th>
+        <th scope="col">Téléphone</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Plats</th>
+        <th scope="col">Etat</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let commande of commande" >
+      <tr>
+        <th scope="row"> {{commande.id}} </th>
+        <td> {{commande.numCommande}} </td>
+        <td> {{commande.user.nomComplet}}</td>
+        <td>  {{commande.user.telephone}}  </td>
+        <td>  {{commande.user.adresse}}  </td>
+        <div *ngFor="let plat of commande.plats" >
+          <td> {{plat.nomPlat}}</td>
+        </div>
+        <td>
+          <div *ngIf="commande.isValid; else elseBlock">
+            <button (click)="onStatus(commande.id)" class="action-btn" title="Validé">
+              <mat-icon style="color: green;" >check_circle_outline</mat-icon>
+            </button>
+          </div>
+          <ng-template #elseBlock>
+            <button (click)="onStatus(commande.id)" class="action-btn" title="En cours...">
+              <mat-icon color="warn">block</mat-icon>
+            </button>
+          </ng-template>
+        </td>
+        <td> {{commande.createdAt |  date:'dd-MM-yyyy - H:m'}} </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+</mat-card>

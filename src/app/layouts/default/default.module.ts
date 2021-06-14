@@ -29,6 +29,7 @@ import { AddTablesComponent } from 'src/app/pages/tables/add-tables/add-tables.c
 import { ListTablesComponent } from 'src/app/pages/tables/list-tables/list-tables.component';
 import { AddRestoComponent } from 'src/app/pages/resto/add-resto/add-resto.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatToolbarModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule
   ]
 })
 export class DefaultModule { }

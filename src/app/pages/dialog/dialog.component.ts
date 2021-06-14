@@ -55,19 +55,10 @@ export class DialogComponent implements OnInit {
         this.roles = JSON.parse(localStorage.getItem('roles'));
         alert(JSON.stringify('Authentification réussi avec success'));
         location.reload();
-        // if (this.roles['0'] === 'ROLE_GERANT'){
-
-        //   this.router.navigate(['/dashboard']);
-        // } else if (this.roles['0'] === 'ROLE_ADMIN') {
-        //   this.router.navigate(['/']);
-        // } else {
-        //   this.router.navigate(['/']);
-        // }
       },
       error => {
-       /* this.errorMessage = 'username ou mot de passe incorrect';*/
-        console.log(error);
-
+      this.errorMessage = 'username ou mot de passe incorrect';
+      // console.log('username ou mot de passe incorrect');
     });
 
   }
@@ -85,6 +76,7 @@ export class DialogComponent implements OnInit {
     };
     this.cs.postClient(users).subscribe( data => {
       alert(JSON.stringify('Création de compte réussi avec success'));
+      //this.inscriptionForm.reset();
     }, errors => {
       alert(JSON.stringify(errors));
     });

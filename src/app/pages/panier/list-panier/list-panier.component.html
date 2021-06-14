@@ -50,7 +50,19 @@
       <tr >
           <td colspan="4" > <h3><strong>Total:</strong></h3> </td>
           <td> <h3><strong>{{ total }}</strong></h3> </td>
-          <td><button class="btn btn-ang" style="width: 200px;">Passer la commande</button></td>
+          <td>
+            <div *ngIf="isRoleClient(); else elseBlock" class="d-flex justify-content-between">
+              <a routerLink="/commande"  class="btn btn-ang btn-cmd">
+                Passer la commande
+              </a>
+            </div>
+            <ng-template #elseBlock>
+              <a (click)="openDialog()" class="btn btn-ang btn-cmd" >
+                Passer la commande
+              </a>
+            </ng-template>
+            <!-- <button (click)="openDialog()" class="btn btn-ang" style="width: 200px;">Passer la commande</button> -->
+          </td>
       </tr>
       </tfoot>
     </table>

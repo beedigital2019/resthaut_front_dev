@@ -25,6 +25,7 @@
             <div>
               <button class="btn-ang mt-3 btn btn-block"  mat-raised-button color="primary" >Enrégistrer</button>
             </div>
+            <div class="alert alert-danger mt-2 text-center" *ngIf="errorMessage" > {{errorMessage}} </div>
           </form>
       </div>
     </div>

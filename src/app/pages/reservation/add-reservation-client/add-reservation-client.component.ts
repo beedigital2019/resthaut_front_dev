@@ -72,7 +72,7 @@ export class AddReservationClientComponent implements OnInit {
       alert('Votre reservation a été bien ajouté avec success');
       return this.router.navigate(['list/resto/', this.resto]);
     }, error => {
-      console.log(error);
+      alert(error);
 
     });
 

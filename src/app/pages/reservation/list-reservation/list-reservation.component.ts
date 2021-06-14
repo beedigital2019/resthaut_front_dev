@@ -15,7 +15,13 @@ export class ListReservationComponent implements OnInit {
   listData: MatTableDataSource<any>;
   reservations = [];
   dataReservation: any;
-  displayedColumns: string[] = ['id', 'nomComplet', 'telephone', 'createdAt', 'heure' , 'action'];
+  panelOpenState = false;
+  displayedColumns: string[] = ['id', 'nomComplet', 'telephone', 'createdAt', 'heure' , 'tables' , 'action'];
+  displayedColumns2 = ['numero', 'nbPersonne'];
+  getdata(data)
+  {
+    return new MatTableDataSource<any>(data);
+  }
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   ngOnInit(): void {
     this.res.getReservationByGerant()
@@ -24,7 +30,9 @@ export class ListReservationComponent implements OnInit {
         this.dataReservation = data;
         this.listData = new MatTableDataSource(this.dataReservation);
         this.listData.paginator = this.paginator;
-        console.log(data);
+        data.forEach(element => {
+          console.log(element.reservation);
+        });
       }, error => {
       console.log(error);
     });

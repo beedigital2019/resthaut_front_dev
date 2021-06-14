@@ -1,18 +1,14 @@
 <mat-tab-group mat-align-tabs="start">
   <mat-tab label="Connexion">
-    <form [formGroup]="formConnexion" (ngSubmit)="onSubmitLogin()" class="example-form mt-5">
-      <p>
+    <form [formGroup]="formConnexion" (ngSubmit)="onSubmitLogin()" class="example-form mt-4">
         <mat-form-field class="mb-3" appearance="outline">
           <mat-label>Entrez le nom d'utilisateur </mat-label>
           <input matInput formControlName="username" placeholder="Placeholder">
           <mat-icon matSuffix><mat-icon>person</mat-icon></mat-icon>
           <mat-error *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <mat-error *ngIf="f.username.errors.required">Veuillez taper nom d'utilisateur</mat-error>
+            <mat-error *ngIf="f.username.errors.required">Veuillez taper le nom d'utilisateur</mat-error>
           </mat-error>
         </mat-form-field>
-      </p>
-
-      <p>
         <mat-form-field appearance="outline">
           <mat-label>Entrez le mot de passe </mat-label>
           <input matInput formControlName="password" placeholder="Placeholder" type="password">
@@ -21,16 +17,16 @@
             <mat-error *ngIf="f.password.errors.required">Veuillez taper le password</mat-error>
           </mat-error>
         </mat-form-field>
-      </p>
       <div>
         <button class="btn-ang mt-3 btn btn-block"  mat-raised-button color="primary" >Se connecter</button>
       </div>
+      <div class="alert alert-danger mt-2 text-center" *ngIf="errorMessage" > {{errorMessage}} </div>
     </form>
 
   </mat-tab>
   <mat-tab label="Création de compte">
     <div class="col-md-12">
-      <form [formGroup]="inscriptionForm" class="formIns"  (ngSubmit)="onSubmitRegister()">
+      <form [formGroup]="inscriptionForm" class="formIns"  (ngSubmit)="onSubmitRegister();">
         <div class="row mt-3">
           <div class="col-md-6">
             <mat-form-field appearance="outline">

@@ -26,6 +26,7 @@ const routes: Routes = [
   {path: 'list/resto/:id', component: DetailsRestoComponent },
   {path: 'panier', component: ListPanierComponent },
   {path: 'reservation/:id', component: AddReservationClientComponent },
+  {path: 'commande', component: AddCommandeComponent },
   { path: '', component: DefaultComponent, children:
     [
       {path: 'dashboard', component: DashboardComponent},
@@ -37,7 +38,6 @@ const routes: Routes = [
       {path: 'dashboard/plat/add', component: AddPlatComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/menu/add', component: AddMenuComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/plat/edit/:id', component: EditPlatComponent, canActivate: [LoginGuardService]},
-      {path: 'dashboard/commande/add', component: AddCommandeComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/tables/add', component: AddTablesComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/tables/list', component: ListTablesComponent, canActivate: [LoginGuardService]},
     ]

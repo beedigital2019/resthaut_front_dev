@@ -34,6 +34,8 @@ import { AddReservationClientComponent } from './pages/reservation/add-reservati
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './pages/dialog/dialog.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -79,7 +81,8 @@ import { DialogComponent } from './pages/dialog/dialog.component';
     MatRippleModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [
   DefaultComponent, {

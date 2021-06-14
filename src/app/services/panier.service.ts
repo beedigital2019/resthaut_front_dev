@@ -45,9 +45,11 @@ export class PanierService {
     }
 
   }
+  // tslint:disable-next-line: typedef
   setCartData(data: any){
     localStorage.setItem('cart', JSON.stringify(data));
   }
+  // tslint:disable-next-line: typedef
   getCartdata(){
     return JSON.parse(localStorage.getItem('cart'));
   }

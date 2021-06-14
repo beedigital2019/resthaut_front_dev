@@ -16,8 +16,8 @@ export class ErrorInterceptorService {
     return next.handle(request).pipe(catchError(err => {
       if (err.status === 401) {
         // auto logout if 401 response returned from api
-        alert('Username ou de mot passe incorrect');
-        this.router.navigate(['login']);
+        console.log('Username ou de mot passe incorrect');
+        // this.router.navigate(['login']);
       }
       const error = err.error.message || err.statusText;
       return throwError(error);

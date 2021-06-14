@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
         }
       },
       error => {
-       /* this.errorMessage = 'username ou mot de passe incorrect';*/
-        console.log(error);
+        this.errorMessage = 'username ou mot de passe incorrect';
+        // console.log(error);
 
     });
   }
