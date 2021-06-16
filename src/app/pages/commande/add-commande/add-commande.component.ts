@@ -1,4 +1,6 @@
+import { CommandeService } from './../../../services/commande/commande.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-commande',
@@ -11,8 +13,11 @@ export class AddCommandeComponent implements OnInit {
   nomComplet: any;
   telephone: any;
   adresse: any;
-
-  constructor() { }
+  form: FormGroup;
+  submitted = false;
+  tab = [];
+  total = 0;
+  constructor(private formBuilder: FormBuilder, private cs: CommandeService) { }
 
   ngOnInit(): void {
     this.plats = JSON.parse(localStorage.getItem('cart'));
@@ -20,7 +25,35 @@ export class AddCommandeComponent implements OnInit {
     this.nomComplet = JSON.parse(localStorage.getItem('nomComplet'));
     this.telephone = JSON.parse(localStorage.getItem('telephone'));
     this.adresse = JSON.parse(localStorage.getItem('adresse'));
+    this.form = this.formBuilder.group({
+      numero: ['', Validators.required],
+      plat: [this.formBuilder.array([]), Validators.required]
+    });
+    this.plats.forEach((element) => {
+      this.total += (element.quantite * element.prix);
+    });
+  }
+  onUpload(){
+    this.submitted = true;
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.plats.length; i++) {
+      const element = this.plats[i];
+      let j = 1;
+      while (j <= this.plats[i].quantite) {
+        this.tab.push(this.plats[i].id  );
+        j++;
+        // console.log(this.tab);
+      }
 
+    }
+    const commande = {
+      plat: this.tab
+    };
+    this.cs.postCommande(commande).subscribe( data => {
+      alert('Votre commande a été enrégistré avec succes');
+    }, error => {
+      alert(error);
+    });
   }
 
 }
