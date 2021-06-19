@@ -35,7 +35,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './pages/dialog/dialog.component';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import { ProfilClientComponent } from './pages/profil/profil-client/profil-client.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 
 @NgModule({
   declarations: [
@@ -48,10 +50,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ListPanierComponent,
     AddReservationClientComponent,
     DialogComponent,
+    ProfilClientComponent,
+    UpdatePasswordComponent,
 
     ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +87,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatNativeDateModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [
   DefaultComponent, {

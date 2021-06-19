@@ -19,6 +19,7 @@ import { AddReservationClientComponent } from './pages/reservation/add-reservati
 import { AddPlatComponent } from './pages/plat/add-plat/add-plat.component';
 import { AddTablesComponent } from './pages/tables/add-tables/add-tables.component';
 import { ListTablesComponent } from './pages/tables/list-tables/list-tables.component';
+import { ProfilClientComponent } from './pages/profil/profil-client/profil-client.component';
 
 const routes: Routes = [
   { path: '' , component: AccueilComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'panier', component: ListPanierComponent },
   {path: 'reservation/:id', component: AddReservationClientComponent },
   {path: 'commande', component: AddCommandeComponent },
+  {path: 'profil/client', component: ProfilClientComponent },
   { path: '', component: DefaultComponent, children:
     [
       {path: 'dashboard', component: DashboardComponent},

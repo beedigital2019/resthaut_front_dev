@@ -22,12 +22,28 @@
                 <div *ngIf="isRoleClient(); else elseBlock" class="d-flex justify-content-between">
                   <a routerLink="/reservation/{{resto.id}}"  class="btn d-flex justify-content-between">
                     <mat-icon>subtitles</mat-icon>
-                      <span>Reserver une table</span>
+                      <span>Reserver</span>
                   </a>
-                  <a class="btn d-flex justify-content-between" (click)="onLogout()">
+                  <div>
+                    <a class="btn d-flex justify-content-between" mat-button [matMenuTriggerFor]="menu">
+                      <span class="text-capitalize">{{ nomComplet }}</span>
+                      <mat-icon>expand_more</mat-icon>
+                    </a>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item (click)="getProfil()" >
+                        <mat-icon> person_pin</mat-icon>
+                        Mon profil
+                      </button>
+                      <button mat-menu-item (click)="onLogout()">
+                        <mat-icon>exit_to_app </mat-icon>
+                        Deconnexion
+                      </button>
+                    </mat-menu>
+                  </div>
+                  <!-- <a class="btn d-flex justify-content-between" (click)="onLogout()">
                     <mat-icon>exit_to_app </mat-icon>
                     <span>Deconnexion</span>
-                  </a>
+                  </a> -->
                 </div>
                 <ng-template #elseBlock>
                   <a (click)="openDialog()" class="btn d-flex justify-content-between ">

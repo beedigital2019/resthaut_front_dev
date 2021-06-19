@@ -16,7 +16,7 @@
 
 </div> -->
 <div class="panier-list">
-  <div class="container" style="background-color: #fff;">
+  <div *ngIf="plats.length > 0 " class="container" style="background-color: #fff;" >
     <h2>Votre panier</h2>
     <table class="table">
       <thead>
@@ -66,5 +66,11 @@
       </tr>
       </tfoot>
     </table>
+  </div>
+  <div *ngIf="plats.length == 0">
+    <div class="container " style="background-color: #fff;">
+      <h2 class="py-3 text-center">Suprise, votre panier est vide ! <a class="btn btn-link" (click)="backClicked()" > Retour</a></h2>
+
+    </div>
   </div>
 </div>

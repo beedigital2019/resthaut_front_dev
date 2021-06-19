@@ -1,0 +1,17 @@
+<div class="profil">
+  <div class="container" style="background-color: #fff; height: 100vh;">
+    <div class="row">
+      <div class="col-md-6 mx-auto text-center">
+        <mat-icon style="width: 100%; font-size: 100px;">mood</mat-icon>
+        <h3 class="pt-2 text-capitalize"> {{ profil.nomComplet }} </h3>
+        <a class="btn btn-link"> Modifier mon profile </a> |
+        <a class="btn btn-link" (click)="openDialog()"> Modifier mon mot passe </a>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-tab-group>
+      <mat-tab label="Réservations"> Content 1 </mat-tab>
+      <mat-tab label="Commandes"> Content 2 </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

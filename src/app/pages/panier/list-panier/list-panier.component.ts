@@ -5,6 +5,7 @@ import { Plat } from 'src/app/model/plat';
 import { BehaviorSubject } from 'rxjs';
 import { DialogComponent } from '../../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-list-panier',
@@ -15,7 +16,11 @@ export class ListPanierComponent implements OnInit {
   roles: any;
   totalCart: any;
 
-  constructor(private route: ActivatedRoute, private pas: PanierService, public dialog: MatDialog) {
+  constructor(private route: ActivatedRoute,
+              private pas: PanierService,
+              public dialog: MatDialog,
+              private _location: Location
+              ) {
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
 
   }
@@ -84,5 +89,7 @@ export class ListPanierComponent implements OnInit {
       }
     }
   }
-
+  backClicked() {
+    this._location.back();
+  }
 }

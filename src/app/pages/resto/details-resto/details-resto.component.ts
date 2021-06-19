@@ -22,6 +22,7 @@ export class DetailsRestoComponent implements OnInit {
   currentUserSubject: BehaviorSubject<any>;
   urlimg = 'data:image/png;base64,';
   roles: any;
+  nomComplet: string;
   constructor( private rs: RestoService,
                private route: ActivatedRoute,
                private router: Router,
@@ -35,6 +36,7 @@ export class DetailsRestoComponent implements OnInit {
 
   ngOnInit(): void {
     this.roles = JSON.parse(localStorage.getItem('roles'));
+    this.nomComplet = JSON.parse(localStorage.getItem('nomComplet'));
     this.id = this.route.snapshot.params.id;
     this.rs.detailsResto(this.id).subscribe( data => {
       this.resto = data;
@@ -77,5 +79,8 @@ export class DetailsRestoComponent implements OnInit {
     this.ls.logout();
     location.reload();
     return this.router.navigate(['list/resto/', this.resto]);
+  }
+  getProfil() {
+    return this.router.navigate(['profil/client']);
   }
 }

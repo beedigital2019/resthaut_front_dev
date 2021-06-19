@@ -14,6 +14,7 @@ export class AddReservationClientComponent implements OnInit {
   resto: any;
   dataTables: any [];
   selectedTable: any = [];
+  errors: any;
   // tslint:disable-next-line: variable-name
   _id: any;
   constructor( private res: ReservationService,
@@ -72,7 +73,8 @@ export class AddReservationClientComponent implements OnInit {
       alert('Votre reservation a été bien ajouté avec success');
       return this.router.navigate(['list/resto/', this.resto]);
     }, error => {
-      alert(error);
+      this.errors = error;
+      // alert(error);
 
     });
 
