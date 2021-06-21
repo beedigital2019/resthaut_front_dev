@@ -14,6 +14,7 @@ export class EditPlatComponent implements OnInit {
   menus: any;
   submitted = false;
   selected: string;
+  id: number;
   constructor(private ps: PlatService,
               private route: ActivatedRoute,
               private ms: MenuService,
@@ -24,7 +25,7 @@ export class EditPlatComponent implements OnInit {
   ngOnInit(): void {
     this.formPlat = this.formBuilder.group({
       nomPlat: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
-      description: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(3)]],
       prix: ['', [Validators.required]],
       menu: ['', Validators.required],
     });
@@ -34,26 +35,23 @@ export class EditPlatComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.ps.getId(params.id).subscribe(data => {
         this.formPlat.patchValue(data);
-        this.selected = this.formPlat.value.menu.categorie;
-        console.log(this.formPlat);
       });
     });
   }
-  // onSubmitForm(){
-  //   this.submitted = true;
-  //   if (this.formPlat.invalid) {
-  //     return;
-  //   }
-  //   const  plats = {
-  //     nomPlat: this.formPlat.value.nomPlat,
-  //     description: this.formPlat.value.description,
-  //     prix: this.formPlat.value.prix,
-  //     menu: this.formPlat.value.menu
-  //   };
-
-  //   this.ps.putPlat(this.route.snapshot.params.id, plats).subscribe( data => {
-  //     alert('Votre plat a été bien ajouté ');
-  //     return this.router.navigate(['dashboard/plat/list']);
-  //   });
-  // }
+  onSubmitForm(){
+    this.submitted = true;
+    if (this.formPlat.invalid) {
+      return;
+    }
+    const  plats = {
+      nomPlat: this.formPlat.value.nomPlat,
+      description: this.formPlat.value.description,
+      prix: this.formPlat.value.prix,
+      menu: `/api/menus/${this.formPlat.value.menu}`
+    };
+    this.ps.putPlat(this.route.snapshot.params.id, plats).subscribe( data => {
+      alert('Votre plat a été bien modifié ');
+      return this.router.navigate(['dashboard/plat/list']);
+    });
+  }
 }

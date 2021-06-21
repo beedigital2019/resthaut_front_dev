@@ -25,4 +25,11 @@ export class TablesService {
     return this.http.post<any[]>(`${environment.apiUrl}/api/add/tables`, data , {headers}
     );
   }
+  deleteTable(id: number){
+    return this.http.delete<any[]>(`${environment.apiUrl}/api/tables/` + id);
+  }
+  getId(id: number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.put(`${environment.apiUrl}/api/tables/` + id, { headers});
+  }
 }

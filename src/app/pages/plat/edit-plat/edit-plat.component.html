@@ -22,7 +22,6 @@
           </label>
           <mat-error *ngIf="submitted && f.description.errors" class="invalid-feedback">
             <mat-error *ngIf="f.description.errors.required">Veuillez taper la description</mat-error>
-            <mat-error *ngIf="f.description.errors.pattern">Le description doit contenir seulement des lettres </mat-error>
             <mat-error *ngIf="f.description.errors.minlength">Le description doit contenir au minimu 2 lettres </mat-error>
           </mat-error>
         </mat-form-field>
@@ -38,25 +37,19 @@
           </mat-error>
         </mat-form-field>
         <label class="mb-2" id="menu">Choisir un menu</label><br>
-        <mat-divider></mat-divider>
-        <mat-radio-group class="mt-2 " aria-labelledby="menu" formControlName="menu" >
-          <mat-radio-button class="mt-2 mx-2"  *ngFor="let menu of menus" value="{{menu.id}}" >
-            <!-- <p>{{menu.categorie}} </p>
-            <img [src]="urlimg+menu.image" alt="{{menu.categorie}}" width="100"> -->
-            <mat-card >
-              <mat-card-header>
-                <mat-card-title>{{menu.categorie}}</mat-card-title>
-              </mat-card-header>
-              <img mat-card-image [src]="urlimg+menu.image" width="80" alt="{{menu.categorie}}">
-
-            </mat-card>
-
-          </mat-radio-button>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="menu" placeholder="menu"  style="height: 20px;"  [(value)]="selected" >
+            <label>
+              <mat-option  *ngFor="let menu of menus" [value]="menu.id" >
+               {{menu.categorie}}
+              </mat-option>
+            </label>
+          </mat-select>
           <mat-error *ngIf="submitted && f.menu.errors" class="invalid-feedback">
             <mat-error *ngIf="f.menu.errors.required">Veuillez choisir un menu </mat-error>
           </mat-error>
-        </mat-radio-group>
-      <button mat-flat-button class="btn-ang mt-3"  type="submit"  >Modifier</button>
+        </mat-form-field>
+      <button mat-flat-button class="btn-ang mt-3" (click)="onSubmitForm()" type="submit"  >Modifier</button>
   </form>
   </div>
   </div>

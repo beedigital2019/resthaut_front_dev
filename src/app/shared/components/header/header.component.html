@@ -11,13 +11,18 @@
             <mat-icon>person_outline</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="onLogout()">
-              <mat-icon>exit_to_app </mat-icon>
-              Deconnexion
-            </button>
+
             <button mat-menu-item (click)="onHome()" >
               <mat-icon>visibility</mat-icon>
               Voir le site
+            </button>
+            <button mat-menu-item (click)="onUpdate()">
+              <mat-icon> border_color</mat-icon>
+              Modifier mot de passe
+            </button>
+            <button mat-menu-item (click)="onLogout()">
+              <mat-icon>exit_to_app </mat-icon>
+              Deconnexion
             </button>
           </mat-menu>
 

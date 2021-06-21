@@ -26,4 +26,7 @@ export class HeaderComponent implements OnInit {
   onHome() {
     return this.route.navigate(['/']);
   }
+  onUpdate() {
+    return this.route.navigate(['dashboard/update-password']);
+  }
 }

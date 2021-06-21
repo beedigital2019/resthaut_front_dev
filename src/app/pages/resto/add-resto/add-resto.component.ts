@@ -2,6 +2,7 @@ import { RestoService } from './../../../services/resto/resto.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MustMatch } from 'src/app/helpers/must-match.service';
 
 @Component({
   selector: 'app-add-resto',
@@ -21,11 +22,13 @@ export class AddRestoComponent implements OnInit {
       nomComplet: ['', [Validators.required]],
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      telephone: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      telephone: ['', [Validators.required, Validators.pattern('^[77,78,76,70,75]{2}[0-9]{7}$')]],
       nomResto: ['', Validators.required],
       description: ['', Validators.required],
       adresse: ['', Validators.required],
-    });
+    },{  validator: MustMatch('password', 'confirmPassword') }
+    );
   }
   // tslint:disable-next-line: typedef
   onFileSelected($event){

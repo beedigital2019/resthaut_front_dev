@@ -39,6 +39,7 @@ import { ProfilClientComponent } from './pages/profil/profil-client/profil-clien
 import {MatMenuModule} from '@angular/material/menu';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { EditClientComponent } from './pages/profil/edit-client/edit-client.component';
+import { PasswordComponent } from './pages/resto/password/password.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { EditClientComponent } from './pages/profil/edit-client/edit-client.comp
     ProfilClientComponent,
     UpdatePasswordComponent,
     EditClientComponent,
+    PasswordComponent,
 
     ],
   entryComponents: [

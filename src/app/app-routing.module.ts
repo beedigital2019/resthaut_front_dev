@@ -1,3 +1,4 @@
+import { PasswordComponent } from './pages/resto/password/password.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { EditClientComponent } from './pages/profil/edit-client/edit-client.component';
 import {  ListPanierComponent } from './pages/panier/list-panier/list-panier.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
       {path: 'dashboard/plat/edit/:id', component: EditPlatComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/tables/add', component: AddTablesComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/tables/list', component: ListTablesComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/update-password', component: PasswordComponent, canActivate: [LoginGuardService] },
     ]
   },
 ];

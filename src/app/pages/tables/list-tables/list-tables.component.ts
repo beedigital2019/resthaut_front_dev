@@ -37,5 +37,12 @@ export class ListTablesComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.listData.filter = filterValue.trim().toLowerCase();
   }
-
+  deleteTable(id: number) {
+    if ( confirm('Etes vous  sur de vouloir supprimer cette table')) {
+      this.ts.deleteTable(id).subscribe(data => {
+        console.log(data);
+        location.reload();
+      });
+    }
+  }
 }
