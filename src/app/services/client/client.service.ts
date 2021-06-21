@@ -22,4 +22,8 @@ export class ClientService {
     return this.http.put<any[]>(`${environment.apiUrl}/api/users/` + id, data , {headers}
     );
   }
+  getId(id: number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.put(`${environment.apiUrl}/api/users/` + id, { headers});
+  }
 }

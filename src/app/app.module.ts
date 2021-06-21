@@ -38,6 +38,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { ProfilClientComponent } from './pages/profil/profil-client/profil-client.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { EditClientComponent } from './pages/profil/edit-client/edit-client.component';
 
 @NgModule({
   declarations: [
@@ -52,11 +53,11 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
     DialogComponent,
     ProfilClientComponent,
     UpdatePasswordComponent,
+    EditClientComponent,
 
     ],
   entryComponents: [
     DialogComponent,
-    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,

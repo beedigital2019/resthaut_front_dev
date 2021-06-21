@@ -1,3 +1,5 @@
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { EditClientComponent } from './pages/profil/edit-client/edit-client.component';
 import {  ListPanierComponent } from './pages/panier/list-panier/list-panier.component';
 import { EditPlatComponent } from './pages/plat/edit-plat/edit-plat.component';
 import { DetailsRestoComponent } from './pages/resto/details-resto/details-resto.component';
@@ -29,6 +31,8 @@ const routes: Routes = [
   {path: 'reservation/:id', component: AddReservationClientComponent },
   {path: 'commande', component: AddCommandeComponent },
   {path: 'profil/client', component: ProfilClientComponent },
+  {path: 'update-password/client', component: UpdatePasswordComponent },
+  {path: 'edit/client/:id', component: EditClientComponent },
   { path: '', component: DefaultComponent, children:
     [
       {path: 'dashboard', component: DashboardComponent},

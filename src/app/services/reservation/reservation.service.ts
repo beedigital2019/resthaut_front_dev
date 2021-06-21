@@ -19,4 +19,9 @@ export class ReservationService {
     return this.http.get<any[]>(`${environment.apiUrl}/api/list/reservation`, {headers}
     );
   }
+  getReservationByClient(){
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.get<any[]>(`${environment.apiUrl}/api/list/reservation/client`, {headers}
+    );
+  }
 }

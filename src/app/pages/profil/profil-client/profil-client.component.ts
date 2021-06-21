@@ -1,9 +1,13 @@
+import { ReservationService } from './../../../services/reservation/reservation.service';
+import { CommandeService } from './../../../services/commande/commande.service';
+import { EditClientComponent } from './../edit-client/edit-client.component';
 import { UpdatePasswordComponent } from './../../update-password/update-password.component';
 import { ClientService } from './../../../services/client/client.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-profil-client',
@@ -12,9 +16,14 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProfilClientComponent implements OnInit {
   profil: any;
+  commandes: any;
+  reservations: any;
   constructor(  private cs: ClientService,
                 private router: Router,
                 public dialog: MatDialog,
+                private _location: Location,
+                private cmds: CommandeService,
+                private res: ReservationService
               )
               { }
 
@@ -22,19 +31,26 @@ export class ProfilClientComponent implements OnInit {
 
     this.cs.getProfilClient().subscribe( data => {
       this.profil = data;
-      console.log(data);
     }, error => {
       alert(error);
     });
+    this.cmds.getCommandeByClient().subscribe( data => {
+      this.commandes = data;
+    }, error => {
+      console.log(error);
+    });
+    this.res.getReservationByClient().subscribe( data => {
+      this.reservations = data;
+      console.log(data);
+    });
   }
-  openDialog() {
-      const dialogRef = this.dialog.open(UpdatePasswordComponent, {
-        width: '450px',
-        height : '400px',
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
-      });
+  getPassword() {
+    this.router.navigate(['update-password/client']);
   }
-
+  getId(id: number) {
+    this.router.navigate(['/edit/client/', id]);
+  }
+  backClicked() {
+    this._location.back();
+  }
 }

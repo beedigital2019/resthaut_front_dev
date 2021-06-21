@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from 'src/app/helpers/must-match.service';
 import { UpdateService } from 'src/app/services/password/update.service';
-
+import {Location} from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-update-password',
   templateUrl: './update-password.component.html',
@@ -13,7 +14,7 @@ export class UpdatePasswordComponent implements OnInit {
   submitted = false;
   errorMessage: string;
   get f() { return this.formClient.controls; }
-  constructor(private formBuilder: FormBuilder, private ups: UpdateService) { }
+  constructor(private formBuilder: FormBuilder, private ups: UpdateService, private _location: Location, private route: Router) { }
 
   ngOnInit(): void {
     this.formClient = this.formBuilder.group({
@@ -38,12 +39,15 @@ export class UpdatePasswordComponent implements OnInit {
 
     this.ups.updatePassword(user).subscribe( data => {
       alert('Votre mot de passe a été mise à jour avec succés');
-      location.reload();
+      return this.route.navigate(['profil/client']);
     }, error => {
       this.errorMessage = error;
       // console.log(error);
 
     });
+  }
+  backClicked() {
+    this._location.back();
   }
 
 }
