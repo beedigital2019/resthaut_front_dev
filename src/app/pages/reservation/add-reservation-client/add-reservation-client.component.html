@@ -29,8 +29,6 @@
                     <mat-card class="m-2 d-flex" *ngFor="let tables of dataTables" >
                       <input type="checkbox" class="btn-check" value="{{tables.id}}"  (change)="onChange($event)"> <br>
                       <strong>Table N°: {{tables.numero}}</strong>
-
-
                     </mat-card>
                   </section> -->
               <p>Choisir un ou plusiuers tables</p>
@@ -48,10 +46,13 @@
             <mat-error *ngIf="submitted && f.tables.errors" class="invalid-feedback">
               <mat-error *ngIf="f.tables.errors.required">Veuillez choisir une ou plusiuers tables</mat-error>
             </mat-error>
-          <div>
+          <!-- <div>
             <button class="btn-ang mt-3" mat-raised-button color="primary" (click)="onSubmitForm()">Enrégistrer</button>
+          </div> -->
+          <div class="d-flex mt-3">
+            <button class="btn-ang btn-modifier " (click)="onSubmitForm()" >Enrégistrer</button>
+            <button class="btn-ang btn-annuler " (click)="backClicked()">Annuler</button>
           </div>
-
         </form>
     </div>
   </div>

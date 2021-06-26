@@ -1,4 +1,4 @@
-<!-- <mat-card >
+<mat-card >
   <div class="d-flex justify-content-between">
     <h2 class="ml-2 " >La liste des commandes</h2>
   </div>
@@ -23,8 +23,9 @@
         <td> {{commande.user.nomComplet}}</td>
         <td>  {{commande.user.telephone}}  </td>
         <td>  {{commande.user.adresse}}  </td>
-        <div *ngFor="let plat of commande.plats" >
-          <td> {{plat.nomPlat}}</td>
+        <div *ngFor="let plcmd of commande.platCommandes" >
+          <td >{{plcmd.id}} - {{plcmd.quantite}}</td>
+
         </div>
         <td>
           <div *ngIf="commande.isValid; else elseBlock">
@@ -43,4 +44,4 @@
     </tbody>
   </table>
 </ng-container>
-</mat-card> -->
+</mat-card>

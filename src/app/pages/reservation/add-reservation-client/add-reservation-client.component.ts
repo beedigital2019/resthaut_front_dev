@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
-
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-add-reservation-client',
   templateUrl: './add-reservation-client.component.html',
@@ -22,7 +22,8 @@ export class AddReservationClientComponent implements OnInit {
                private formBuilder: FormBuilder,
                private route: ActivatedRoute,
                private rs: RestoService,
-               private ts: TablesService
+               private ts: TablesService,
+               private _location: Location
                ) { }
   reservationForm: FormGroup;
   get f() { return this.reservationForm.controls; }
@@ -79,5 +80,7 @@ export class AddReservationClientComponent implements OnInit {
     });
 
   }
-
+  backClicked() {
+    this._location.back();
+  }
 }

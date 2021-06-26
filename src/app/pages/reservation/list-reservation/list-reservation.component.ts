@@ -9,36 +9,27 @@ import { ReservationService } from 'src/app/services/reservation/reservation.ser
   styleUrls: ['./list-reservation.component.scss']
 })
 export class ListReservationComponent implements OnInit {
+  listData: any;
 
   constructor(private res: ReservationService) { }
   searchValue: string;
-  listData: MatTableDataSource<any>;
-  reservations = [];
-  dataReservation: any;
-  panelOpenState = false;
-  displayedColumns: string[] = ['id', 'nomComplet', 'telephone', 'createdAt', 'heure' , 'tables' , 'action'];
-  displayedColumns2 = ['numero', 'nbPersonne'];
-  getdata(data)
-  {
-    return new MatTableDataSource<any>(data);
-  }
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  reservations: any[];
   ngOnInit(): void {
     this.res.getReservationByGerant()
       .subscribe( data => {
-        this.reservations.push(this.reservations);
-        this.dataReservation = data;
-        this.listData = new MatTableDataSource(this.dataReservation);
-        this.listData.paginator = this.paginator;
-        data.forEach(element => {
-          console.log(element.reservation);
-        });
-      }, error => {
-      console.log(error);
+        this.reservations = data;
+        console.log(this.reservations);
     });
+
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.listData.filter = filterValue.trim().toLowerCase();
+  }
+  onStatus(id: number) {
+    this.res.getEtatReservation(id).subscribe(data => {
+      alert(JSON.stringify(data));
+      location.reload();
+    });
   }
 }

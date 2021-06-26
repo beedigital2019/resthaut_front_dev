@@ -8,18 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListCommandeComponent implements OnInit {
   commande: any;
+  plat: any;
   constructor( private cs: CommandeService) { }
 
   ngOnInit(): void {
     this.cs.getCommandeByResto().subscribe( data => {
       console.log(data);
       this.commande = data;
-      // if (data) {
-      //   for (let i = 0; i < data.length; i++) {
-      //     const element = data[i].commande;
-      //     this.commande = element;
-      //   }
-      // }
     });
   }
   onStatus(id: number) {

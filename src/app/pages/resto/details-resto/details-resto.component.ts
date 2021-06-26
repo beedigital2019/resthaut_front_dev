@@ -35,8 +35,8 @@ export class DetailsRestoComponent implements OnInit {
               }
 
   ngOnInit(): void {
-    this.roles = JSON.parse(localStorage.getItem('roles'));
-    this.nomComplet = JSON.parse(localStorage.getItem('nomComplet'));
+    // this.roles = JSON.parse(localStorage.getItem('roles'));
+    // this.nomComplet = JSON.parse(localStorage.getItem('nomComplet'));
     this.id = this.route.snapshot.params.id;
     this.rs.detailsResto(this.id).subscribe( data => {
       this.resto = data;
@@ -67,8 +67,9 @@ export class DetailsRestoComponent implements OnInit {
     }
   }
   isRoleClient() {
+    this.roles = JSON.parse(localStorage.getItem('roles'));
     if (this.roles) {
-      if (this.roles['0'] === 'ROLE_CLIENT') {
+      if (this.roles['0'] === 'ROLE_CLIENT' || this.roles['0'] === 'ROLE_GERANT') {
         return true;
       }
     }

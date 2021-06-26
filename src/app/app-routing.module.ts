@@ -38,7 +38,7 @@ const routes: Routes = [
     [
       {path: 'dashboard', component: DashboardComponent},
       {path: 'dashboard/commande/list', component: ListCommandeComponent, canActivate: [LoginGuardService]},
-      {path: 'dashboard/menu/list', component: ListMenuComponent},
+      {path: 'dashboard/menu/list', component: ListMenuComponent, canActivate: [LoginGuardService]},
       {path: 'add/resto', component: AddRestoComponent },
       {path: 'dashboard/plat/list', component: ListPlatComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/reservation/list', component: ListReservationComponent, canActivate: [LoginGuardService]},
