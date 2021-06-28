@@ -1,3 +1,4 @@
+import { EditGerantComponent } from './pages/resto/edit-gerant/edit-gerant.component';
 import { PasswordComponent } from './pages/resto/password/password.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { EditClientComponent } from './pages/profil/edit-client/edit-client.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
       {path: 'dashboard/commande/list', component: ListCommandeComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/menu/list', component: ListMenuComponent, canActivate: [LoginGuardService]},
       {path: 'add/resto', component: AddRestoComponent },
+      {path: 'dashboard/edit/gerant/:id', component: EditGerantComponent, canActivate: [LoginGuardService] },
       {path: 'dashboard/plat/list', component: ListPlatComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/reservation/list', component: ListReservationComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/plat/add', component: AddPlatComponent, canActivate: [LoginGuardService]},

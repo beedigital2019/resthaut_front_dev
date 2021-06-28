@@ -2,7 +2,7 @@ import { RestoService } from './../../../services/resto/resto.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MustMatch } from 'src/app/helpers/must-match.service';
+import { MustMatch } from 'src/app/services/helpers/must-match.service';
 
 @Component({
   selector: 'app-add-resto',
@@ -27,7 +27,7 @@ export class AddRestoComponent implements OnInit {
       nomResto: ['', Validators.required],
       description: ['', Validators.required],
       adresse: ['', Validators.required],
-    },{  validator: MustMatch('password', 'confirmPassword') }
+    }, {  validator: MustMatch('password', 'confirmPassword') }
     );
   }
   // tslint:disable-next-line: typedef
@@ -38,6 +38,7 @@ export class AddRestoComponent implements OnInit {
     }
   }
   get f() { return this.formResto.controls; }
+  // tslint:disable-next-line: typedef
   onSubmitForm(){
     this.submitted = true;
     if (this.formResto.invalid) {

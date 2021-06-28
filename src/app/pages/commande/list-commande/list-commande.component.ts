@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListCommandeComponent implements OnInit {
   commande: any;
   plat: any;
+  searchText;
   constructor( private cs: CommandeService) { }
 
   ngOnInit(): void {

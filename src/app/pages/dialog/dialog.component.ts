@@ -2,8 +2,8 @@ import { ClientService } from './../../services/client/client.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MustMatch } from 'src/app/helpers/must-match.service';
 import { LoginService } from 'src/app/services/login/login.service';
+import { MustMatch } from 'src/app/services/helpers/must-match.service';
 
 @Component({
   selector: 'app-dialog',
@@ -40,6 +40,7 @@ export class DialogComponent implements OnInit {
   }
   get f() { return this.formConnexion.controls; }
   get g() { return this.inscriptionForm.controls; }
+  // tslint:disable-next-line: typedef
   onSubmitLogin() {
 
     this.submitted = true;

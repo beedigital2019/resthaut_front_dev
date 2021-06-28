@@ -17,11 +17,10 @@ export class LoginComponent implements OnInit {
     this.roles = JSON.parse(localStorage.getItem('roles'));
     if (this.ls.currentUserValue) {
       if (this.roles['0'] === 'ROLE_GERANT'){
-
+        window.alert('Vous ếtes déja connectés');
         this.router.navigate(['/dashboard']);
-      } else if (this.roles['0'] === 'ROLE_ADMIN') {
-        this.router.navigate(['/']);
-      } else {
+      }else if (this.roles['0'] === 'ROLE_ADMIN' || this.roles['0'] === 'ROLE_CLIENT') {
+        window.alert('Vous ếtes déja connectés');
         this.router.navigate(['/']);
       }
     }

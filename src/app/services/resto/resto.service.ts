@@ -23,5 +23,14 @@ export class RestoService {
   detailsResto(id: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/api/resto/list/` + id);
   }
+  getId(id: number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.put(`${environment.apiUrl}/api/restos/` + id, { headers});
+  }
+  updateResto(data: any){
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.put<any[]>(`${environment.apiUrl}/api/resto/edit`, data, {headers}
+    );
+  }
 
 }

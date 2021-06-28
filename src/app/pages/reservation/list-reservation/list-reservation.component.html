@@ -115,12 +115,13 @@
   <mat-form-field appearance="outline" style="width: 100%;">
     <mat-label>Recherche</mat-label>
     <label>
-      <input matInput placeholder="Rechercher une reservation" (keyup)="applyFilter($event)">
+      <input matInput placeholder="Rechercher un nom" name="search" [(ngModel)]="searchText" autocomplete="off">
     </label>
   </mat-form-field>
   <mat-divider></mat-divider>
   <div class="mat-elevation-z8 mt-3" >
-    <table class="table" *ngFor="reservations.length > 0">
+    <ng-container *ngIf="reservations.length > 0" >
+    <table class="table" >
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -133,7 +134,7 @@
           <th scope="col">Tables</th>
         </tr>
       </thead>
-      <tbody *ngFor="let reservation of reservations" >
+      <tbody *ngFor="let reservation of reservations | filter:searchText" >
         <tr>
           <th scope="row"> {{reservation.id}} </th>
           <td> {{reservation.user.nomComplet}}</td>
@@ -160,6 +161,7 @@
         </tr>
       </tbody>
     </table>
+    </ng-container>
     <div *ngIf="reservations.length == 0">
       <div class="container " style="background-color: #fff;">
         <h2 class="py-3 text-center">Suprise, la liste des reservations est vide !</h2>

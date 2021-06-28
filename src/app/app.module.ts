@@ -40,6 +40,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { EditClientComponent } from './pages/profil/edit-client/edit-client.component';
 import { PasswordComponent } from './pages/resto/password/password.component';
+import { EditGerantComponent } from './pages/resto/edit-gerant/edit-gerant.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { PasswordComponent } from './pages/resto/password/password.component';
     UpdatePasswordComponent,
     EditClientComponent,
     PasswordComponent,
+    EditGerantComponent,
 
     ],
   entryComponents: [

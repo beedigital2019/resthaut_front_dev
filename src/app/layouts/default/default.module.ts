@@ -30,6 +30,7 @@ import { ListTablesComponent } from 'src/app/pages/tables/list-tables/list-table
 import { AddRestoComponent } from 'src/app/pages/resto/add-resto/add-resto.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatRadioModule,
     MatDatepickerModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    Ng2SearchPipeModule
   ]
 })
 export class DefaultModule { }

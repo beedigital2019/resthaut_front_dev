@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MustMatch } from 'src/app/helpers/must-match.service';
 import { UpdateService } from 'src/app/services/password/update.service';
 import {Location} from '@angular/common';
 import { Router } from '@angular/router';
+import { MustMatch } from 'src/app/services/helpers/must-match.service';
 @Component({
   selector: 'app-update-password',
   templateUrl: './update-password.component.html',
@@ -25,6 +25,7 @@ export class UpdatePasswordComponent implements OnInit {
     {  validator: MustMatch('newPassword', 'confirmPassword') }
     );
   }
+  // tslint:disable-next-line: typedef
   onSubmitPassword() {
 
     this.submitted = true;

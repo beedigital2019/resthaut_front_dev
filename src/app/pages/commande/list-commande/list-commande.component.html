@@ -2,6 +2,13 @@
   <div class="d-flex justify-content-between">
     <h2 class="ml-2 " >La liste des commandes</h2>
   </div>
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Recherche</mat-label>
+    <label>
+      <input matInput placeholder="Rechercher un nom" name="search" [(ngModel)]="searchText" autocomplete="off">
+    </label>
+  </mat-form-field>
+  <mat-divider></mat-divider>
   <ng-container  *ngIf="commande.length > 0" >
   <table class="table">
     <thead>
@@ -16,7 +23,7 @@
         <th scope="col">Date</th>
       </tr>
     </thead>
-    <tbody *ngFor="let commande of commande" >
+    <tbody *ngFor="let commande of commande | filter:searchText" >
       <tr>
         <th scope="row"> {{commande.id}} </th>
         <td> {{commande.numCommande}} </td>

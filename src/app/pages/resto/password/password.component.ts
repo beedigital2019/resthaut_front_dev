@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MustMatch } from 'src/app/helpers/must-match.service';
 import { UpdateService } from 'src/app/services/password/update.service';
 import {Location} from '@angular/common';
+import { MustMatch } from 'src/app/services/helpers/must-match.service';
 
 @Component({
   selector: 'app-password',

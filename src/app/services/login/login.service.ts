@@ -36,6 +36,7 @@ export class LoginService {
         localStorage.setItem('telephone', JSON.stringify(decodedToken.telephone));
         localStorage.setItem('adresse', JSON.stringify(decodedToken.adresse));
         localStorage.setItem('nomComplet', JSON.stringify(decodedToken.nomComplet));
+        localStorage.setItem('idGerant', JSON.stringify(decodedToken.idGerant));
         localStorage.setItem('currentUser', JSON.stringify(user));
         return user;
       })
