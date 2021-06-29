@@ -4,6 +4,7 @@ import { UpdateService } from 'src/app/services/password/update.service';
 import {Location} from '@angular/common';
 import { Router } from '@angular/router';
 import { MustMatch } from 'src/app/services/helpers/must-match.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-update-password',
   templateUrl: './update-password.component.html',
@@ -14,7 +15,12 @@ export class UpdatePasswordComponent implements OnInit {
   submitted = false;
   errorMessage: string;
   get f() { return this.formClient.controls; }
-  constructor(private formBuilder: FormBuilder, private ups: UpdateService, private _location: Location, private route: Router) { }
+  constructor(private formBuilder: FormBuilder,
+              private ups: UpdateService,
+              private _location: Location,
+              private route: Router,
+              private toastr: ToastrService
+              ) { }
 
   ngOnInit(): void {
     this.formClient = this.formBuilder.group({
@@ -39,11 +45,14 @@ export class UpdatePasswordComponent implements OnInit {
     // console.log(user);
 
     this.ups.updatePassword(user).subscribe( data => {
-      alert('Votre mot de passe a été mise à jour avec succés');
+      this.toastr.success('Votre mot de passe a été mise à jour avec success', '');
+      // alert('Votre mot de passe a été mise à jour avec succés');
       return this.route.navigate(['profil/client']);
     }, error => {
       this.errorMessage = error;
-      // console.log(error);
+      this.toastr.error('Oups, une erreur s\'est produite', '', {
+        timeOut: 3000,
+      });
 
     });
   }

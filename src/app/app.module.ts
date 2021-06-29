@@ -41,7 +41,7 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
 import { EditClientComponent } from './pages/profil/edit-client/edit-client.component';
 import { PasswordComponent } from './pages/resto/password/password.component';
 import { EditGerantComponent } from './pages/resto/edit-gerant/edit-gerant.component';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +93,14 @@ import { EditGerantComponent } from './pages/resto/edit-gerant/edit-gerant.compo
     MatCheckboxModule,
     MatDialogModule,
     MatExpansionModule,
-    MatMenuModule
+    MatMenuModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      progressBar: true,
+      progressAnimation: 'increasing'
+    }),
   ],
   providers: [
   DefaultComponent, {

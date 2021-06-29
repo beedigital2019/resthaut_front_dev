@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login/login.service';
 import { MustMatch } from 'src/app/services/helpers/must-match.service';
-
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -19,7 +18,7 @@ export class DialogComponent implements OnInit {
   constructor(private ls: LoginService,
               private router: Router,
               private formBuilder: FormBuilder ,
-              private cs: ClientService
+              private cs: ClientService,
               ) { }
 
   ngOnInit(): void {
@@ -33,7 +32,7 @@ export class DialogComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
-      adresse: ['', [Validators.required]],
+      adresseDomicile: ['', [Validators.required]],
     },
       {  validator: MustMatch('password', 'confirmPassword') }
     );
@@ -73,12 +72,14 @@ export class DialogComponent implements OnInit {
         telephone: this.inscriptionForm.value.telephone,
         username: this.inscriptionForm.value.username,
         password: this.inscriptionForm.value.password,
-        adresse: this.inscriptionForm.value.adresse,
+        adresseDomicile: this.inscriptionForm.value.adresseDomicile,
     };
     this.cs.postClient(users).subscribe( data => {
-      alert(JSON.stringify('Création de compte réussi avec success'));
+      alert(JSON.stringify('Votre compte a été crée avec succes.'));
       //this.inscriptionForm.reset();
     }, errors => {
+      console.log(errors);
+
       alert(JSON.stringify(errors));
     });
   }

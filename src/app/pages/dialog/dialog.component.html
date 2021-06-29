@@ -68,10 +68,10 @@
           <div class="col-md-6">
             <mat-form-field appearance="outline">
               <mat-label>Entrez l'adresse </mat-label>
-              <input matInput formControlName="adresse" placeholder="Placeholder">
+              <input matInput formControlName="adresseDomicile" placeholder="Placeholder">
             </mat-form-field>
-            <mat-error *ngIf="submitted && g.adresse.errors" class="invalid-feedback">
-              <mat-error *ngIf="g.adresse.errors.required">Veuillez taper l'adresse' </mat-error>
+            <mat-error *ngIf="submitted && g.adresseDomicile.errors" class="invalid-feedback">
+              <mat-error *ngIf="g.adresseDomicile.errors.required">Veuillez taper l'adresse' </mat-error>
             </mat-error>
           </div>
           <div class="col-md-6">
