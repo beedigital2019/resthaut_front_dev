@@ -3,6 +3,7 @@ import { PlatService } from './../../../services/plat/plat.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-plat',
@@ -19,7 +20,8 @@ export class EditPlatComponent implements OnInit {
               private route: ActivatedRoute,
               private ms: MenuService,
               private router: Router,
-              private formBuilder: FormBuilder
+              private formBuilder: FormBuilder,
+              private toastr: ToastrService
   ) { }
   get f() { return this.formPlat.controls; }
   ngOnInit(): void {
@@ -50,8 +52,13 @@ export class EditPlatComponent implements OnInit {
       menu: `/api/menus/${this.formPlat.value.menu}`
     };
     this.ps.putPlat(this.route.snapshot.params.id, plats).subscribe( data => {
-      alert('Votre plat a été bien modifié ');
+      // alert('Votre plat a été bien modifié ');
+      this.toastr.success('Votre plat a été bien modifié ', '');
       return this.router.navigate(['dashboard/plat/list']);
+    }, error => {
+      this.toastr.error('Oups, une erreur s\'est produite', '', {
+        timeOut: 3000,
+      });
     });
   }
 }

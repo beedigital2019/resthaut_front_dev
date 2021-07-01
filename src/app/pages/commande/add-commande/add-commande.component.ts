@@ -1,6 +1,7 @@
 import { CommandeService } from './../../../services/commande/commande.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-commande',
@@ -17,7 +18,7 @@ export class AddCommandeComponent implements OnInit {
   submitted = false;
   tab = [];
   total = 0;
-  constructor(private formBuilder: FormBuilder, private cs: CommandeService) { }
+  constructor(private formBuilder: FormBuilder, private cs: CommandeService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.plats = JSON.parse(localStorage.getItem('cart'));
@@ -50,9 +51,14 @@ export class AddCommandeComponent implements OnInit {
       plat: this.tab
     };
     this.cs.postCommande(commande).subscribe( data => {
-      alert('Votre commande a été enrégistré avec succes');
+      // alert('Votre commande a été enrégistré avec succes');
+      this.toastr.success('Votre commande a été enrégistré avec succes', '');
+      localStorage.removeItem('cart');
     }, error => {
-      alert(error);
+      // alert(error);
+      this.toastr.error('Oups, une erreur s\'est produite', '', {
+        timeOut: 3000,
+      });
     });
   }
 

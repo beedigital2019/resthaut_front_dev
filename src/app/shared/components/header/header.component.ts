@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { LoginService } from './../../../services/login/login.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
-  constructor(private ls: LoginService, private route: Router) { }
+  constructor(private ls: LoginService, private route: Router, private toastr: ToastrService) { }
   idGerant: number;
   ngOnInit(): void {
     this.idGerant = JSON.parse(localStorage.getItem('idGerant'));
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.clear();
     this.ls.logout();
+    this.toastr.success('Deconnexion réussi avec success', '');
     return this.route.navigate(['/']);
   }
   onHome() {

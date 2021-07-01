@@ -3,6 +3,7 @@ import { PlatService } from './../../../services/plat/plat.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuService } from 'src/app/services/menu/menu.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-plat',
@@ -11,10 +12,12 @@ import { MenuService } from 'src/app/services/menu/menu.service';
 })
 export class AddPlatComponent implements OnInit {
 
-  constructor( private ps: PlatService,
-               private ms: MenuService ,
-               private router: Router,
-               private formBuilder: FormBuilder ) { }
+  constructor(  private ps: PlatService,
+                private ms: MenuService ,
+                private router: Router,
+                private formBuilder: FormBuilder,
+                private toastr: ToastrService
+              ) { }
   get f() { return this.formPlat.controls; }
   formPlat: FormGroup;
   menus: any;
@@ -48,8 +51,13 @@ export class AddPlatComponent implements OnInit {
       menu: this.formPlat.value.menu,
     };
     this.ps.postPlat(plats).subscribe( data => {
-      alert('Votre plat a été bien ajouté ');
+      this.toastr.success('Votre plat a été bien ajouté', '');
+      // alert('Votre plat a été bien ajouté ');
       return this.router.navigate(['dashboard/plat/list']);
+    }, error => {
+      this.toastr.error('Oups, une erreur s\'est produite', '', {
+        timeOut: 3000,
+      });
     });
   }
 

@@ -2,6 +2,7 @@ import { LoginService } from './../../../services/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +14,22 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
   submitted: boolean;
   roles: any;
-  constructor( private ls: LoginService, private router: Router, private formBuilder: FormBuilder ) {
+  username: any;
+  constructor(  private ls: LoginService,
+                private router: Router,
+                private formBuilder: FormBuilder,
+                private toastr: ToastrService
+                ) {
     this.roles = JSON.parse(localStorage.getItem('roles'));
     if (this.ls.currentUserValue) {
+      this.username = JSON.parse(localStorage.getItem('username'));
       if (this.roles['0'] === 'ROLE_GERANT'){
-        window.alert('Vous ếtes déja connectés');
+        this.toastr.success('Vous êtes déja connectés', this.username);
+        // window.alert('Vous ếtes déja connectés');
         this.router.navigate(['/dashboard']);
       }else if (this.roles['0'] === 'ROLE_ADMIN' || this.roles['0'] === 'ROLE_CLIENT') {
-        window.alert('Vous ếtes déja connectés');
+        this.toastr.success('Vous êtes déja connectés', this.username);
+        // window.alert('Vous ếtes déja connectés');
         this.router.navigate(['/']);
       }
     }
@@ -45,6 +54,7 @@ export class LoginComponent implements OnInit {
     };
     this.ls.login(user).subscribe(
       data => {
+        this.toastr.success('Authentification réussi avec success', user.username);
         this.roles = JSON.parse(localStorage.getItem('roles'));
         if (this.roles['0'] === 'ROLE_GERANT'){
           this.router.navigate(['/dashboard']);
@@ -55,9 +65,10 @@ export class LoginComponent implements OnInit {
         }
       },
       error => {
-        this.errorMessage = 'username ou mot de passe incorrect';
-        // console.log(error);
-
+      this.errorMessage = 'username ou mot de passe incorrect';
+      this.toastr.error('Oups, une erreur s\'est produite', '', {
+        timeOut: 3000,
+      });
     });
   }
 }

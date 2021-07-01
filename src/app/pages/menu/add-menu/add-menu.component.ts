@@ -2,6 +2,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MenuService } from './../../../services/menu/menu.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-menu',
@@ -13,6 +14,7 @@ export class AddMenuComponent implements OnInit {
                 private ms: MenuService,
                 private router: Router,
                 private route: ActivatedRoute,
+                private toastr: ToastrService
               ) { }
   get f() { return this.formMenu.controls; }
   formMenu: FormGroup;
@@ -42,9 +44,13 @@ export class AddMenuComponent implements OnInit {
     this.uploadData.append('categorie', this.formMenu.value.categorie);
 
     this.ms.postMenu(this.uploadData).subscribe( data => {
-      alert('Votre menu a été bien ajouté avec success');
+      this.toastr.success('Votre menu a été bien ajouté', '');
+      // alert('Votre menu a été bien ajouté avec success');
       return this.router.navigate(['dashboard/menu/list']);
     }, error => {
+      this.toastr.error('Oups, une erreur s\'est produite', '', {
+        timeOut: 3000,
+      });
       console.log(error);
 
     });

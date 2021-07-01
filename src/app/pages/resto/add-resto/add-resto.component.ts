@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MustMatch } from 'src/app/services/helpers/must-match.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-resto',
@@ -14,7 +15,11 @@ export class AddRestoComponent implements OnInit {
   submitted = false;
   selectedFile: any;
   uploadData: FormData;
-  constructor(private router: Router, private rs: RestoService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router,
+              private rs: RestoService,
+              private formBuilder: FormBuilder,
+              private toastr: ToastrService
+              ) { }
 
   ngOnInit(): void {
     this.formResto = this.formBuilder.group({
@@ -56,8 +61,13 @@ export class AddRestoComponent implements OnInit {
 
     console.log(this.uploadData);
     this.rs.postResto(this.uploadData).subscribe( data => {
-      alert('Votre resto a été bien ajouté ');
+      // alert('Votre resto a été bien ajouté ');
+      this.toastr.success('Votre resto a été bien ajouté, veuillez vous connecter ', '');
       this.router.navigate(['/login']);
+    }, error => {
+      this.toastr.error('Oups, une erreur s\'est produite', '', {
+        timeOut: 3000,
+      });
     });
   }
 

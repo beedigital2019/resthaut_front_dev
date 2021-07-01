@@ -1,6 +1,6 @@
 import { PanierService } from '../../../services/panier.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Plat } from 'src/app/model/plat';
 import { BehaviorSubject } from 'rxjs';
 import { DialogComponent } from '../../dialog/dialog.component';
@@ -17,6 +17,7 @@ export class ListPanierComponent implements OnInit {
   totalCart: any;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private pas: PanierService,
               public dialog: MatDialog,
               private _location: Location
@@ -45,6 +46,10 @@ export class ListPanierComponent implements OnInit {
       if (this.plats[i].id === id) {
         this.plats.splice(i, 1);
         localStorage.setItem('cart', JSON.stringify(this.plats));
+        const currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
       }
     }
   }
@@ -55,6 +60,10 @@ export class ListPanierComponent implements OnInit {
       if (this.plats[i].id === id) {
         this.plats[i].quantite++;
         localStorage.setItem('cart', JSON.stringify(this.plats));
+        const currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
       }
     }
   }
@@ -66,6 +75,10 @@ export class ListPanierComponent implements OnInit {
       if (this.plats[i].id === id) {
         this.plats[i].quantite--;
         localStorage.setItem('cart', JSON.stringify(this.plats));
+        const currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
       }
     }
   }

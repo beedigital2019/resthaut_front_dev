@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Location} from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-gerant',
@@ -19,7 +20,8 @@ export class EditGerantComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private res: RestoService,
-    private _location: Location
+    private _location: Location,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -55,10 +57,15 @@ export class EditGerantComponent implements OnInit {
     };
     console.log(resto);
     this.res.updateResto(resto).subscribe( data => {
-      alert('Votre resto a été modifié avec succes.');
+      this.toastr.success('Votre resto a été modifié avec succes.', '');
+      // alert('Votre resto a été modifié avec succes.');
+      return this.router.navigate(['dashboard']);
       console.log(data);
     }, error => {
-      alert(error);
+      // alert(error);
+      this.toastr.error('Oups, une erreur s\'est produite', '', {
+        timeOut: 3000,
+      });
     });
   }
   backClicked() {

@@ -35,6 +35,14 @@
 
         </div>
         <td>
+          <!-- <button (click)="onStatus(commande.id)" class="isValid-btn" title="Validé">
+            <div *ngIf="commande.isValid; else elseBlock">
+              <mat-icon class="green" style="color: green;" >check_circle_outline</mat-icon>
+            </div>
+            <ng-template #elseBlock>
+              <mat-icon class="warn" color="warn">block</mat-icon>
+            </ng-template>
+          </button> -->
           <div *ngIf="commande.isValid; else elseBlock">
             <button (click)="onStatus(commande.id)" class="action-btn" title="Validé">
               <mat-icon style="color: green;" >check_circle_outline</mat-icon>

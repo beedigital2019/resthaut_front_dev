@@ -1,5 +1,8 @@
 import { CommandeService } from './../../../services/commande/commande.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-commande',
@@ -10,7 +13,8 @@ export class ListCommandeComponent implements OnInit {
   commande: any;
   plat: any;
   searchText;
-  constructor( private cs: CommandeService) { }
+  message: string;
+  constructor( private cs: CommandeService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
     this.cs.getCommandeByResto().subscribe( data => {
@@ -20,8 +24,20 @@ export class ListCommandeComponent implements OnInit {
   }
   onStatus(id: number) {
     this.cs.getEtatCommande(id).subscribe(data => {
-      alert(JSON.stringify(data));
-      location.reload();
+      this.message = JSON.stringify(data['message']);
+      this.toastr.success(this.message.toString().replace('"', ''), '');
+      const currentUrl = this.router.url;
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([currentUrl]);
+    } , error => {
+      this.toastr.error(error, '', {
+        timeOut: 3000,
+      });
+      const currentUrl = this.router.url;
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([currentUrl]);
     });
   }
 
