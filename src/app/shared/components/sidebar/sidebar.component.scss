@@ -24,7 +24,11 @@
       background-color: rgb(175, 175, 175);
     }
     .icon-image{
+      &:hover{
+        color: #333;
+      }
     }
+
   }
 }
 .multi-level , .item ul, .nav-item input{

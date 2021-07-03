@@ -37,5 +37,9 @@ export class RestoService {
     return this.http.post<any[]>(`${environment.apiUrl}/api/resto/image-edit`, data, {headers}
     );
   }
-
+  getRestoByUserConnected(){
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.get<any[]>(`${environment.apiUrl}/api/resto/user`, {headers}
+    );
+  }
 }

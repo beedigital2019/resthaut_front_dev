@@ -2,9 +2,9 @@
     <mat-nav-list>
     <div class="profil-card">
       <div class="header">
-        <h2> {{nomResto}} </h2>
+        <h2> {{resto.nomResto}} </h2>
       </div>
-      <img [src]="urlimg+image" alt="Image de profil" class="rounded-circle">
+      <img [src]="urlimg+resto.image" alt="Image de profil" class="rounded-circle">
       <div class="bloc-icon-image">
         <mat-icon class="icon-image" (click)="openDialog()"> photo_camera  </mat-icon>
       </div>

@@ -12,8 +12,9 @@ import { RestoService } from 'src/app/services/resto/resto.service';
 })
 export class SidebarComponent implements OnInit {
   roles: any;
-  image: any;
-  nomResto: any;
+  resto: any;
+  // image: any;
+  // nomResto: any;
   urlimg = 'data:image/png;base64,';
   currentUserSubject: any;
   constructor(
@@ -24,10 +25,13 @@ export class SidebarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.roles = JSON.parse(localStorage.getItem('roles'));
-    this.image = JSON.parse(localStorage.getItem('image'));
-    this.nomResto = JSON.parse(localStorage.getItem('nomResto'));
-    
+    // this.roles = JSON.parse(localStorage.getItem('roles'));
+    // this.image = JSON.parse(localStorage.getItem('image'));
+    // this.nomResto = JSON.parse(localStorage.getItem('nomResto'));
+    this.rs.getRestoByUserConnected().subscribe( data => {
+      console.log(data);
+      this.resto = data;
+    });
   }
   openDialog() {
     if (this.currentUserSubject.value) {
@@ -40,26 +44,4 @@ export class SidebarComponent implements OnInit {
       });
     }
   }
-  // onFileSelected($event){
-  //   if ($event.target.files.length > 0) {
-  //     this.selectedFile = $event.target.files[0];
-  //     this.formImage.get('image').setValue(this.selectedFile);
-  //   }
-  // }
-  // get f() { return this.formImage.controls; }
-  // onSubmitForm(){
-  //   this.submitted = true;
-  //   if (this.formImage.invalid) {
-  //     return;
-  //   }
-  //   this.uploadData = new FormData();
-  //   this.uploadData.append('image', this.selectedFile, this.selectedFile.name);
-  //   this.rs.postResto(this.uploadData).subscribe( data => {
-  //     alert('Votre image a été bien ajouté ');
-
-  //   }, error => {
-  //    console.log(error);
-
-  //   });
-  // }
 }

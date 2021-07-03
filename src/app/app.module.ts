@@ -76,7 +76,6 @@ import { EditImageRestoComponent } from './pages/resto/edit-image-resto/edit-ima
     MatIconModule,
     MatDividerModule,
     MatCardModule,
-    MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
