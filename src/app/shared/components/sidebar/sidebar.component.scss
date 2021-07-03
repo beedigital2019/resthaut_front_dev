@@ -5,6 +5,26 @@
     width: 150px;
     height: 150px;
     object-fit: cover ;
+    //border: 1px solid #333;
+    position: relative;
+    z-index: 0;
+  }
+  .bloc-icon-image{
+    background-color: rgb(200, 200, 200);
+    position: absolute;
+    display: block;
+    padding: 2px;
+    width: 40px;
+    margin-top: -35px;
+    margin-left: 130px;
+    z-index: 1;
+    cursor: pointer;
+    border-radius: 100%;
+    &:hover{
+      background-color: rgb(175, 175, 175);
+    }
+    .icon-image{
+    }
   }
 }
 .multi-level , .item ul, .nav-item input{

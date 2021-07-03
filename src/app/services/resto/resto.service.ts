@@ -32,5 +32,10 @@ export class RestoService {
     return this.http.put<any[]>(`${environment.apiUrl}/api/resto/edit`, data, {headers}
     );
   }
+  updateImageResto(data: any){
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.post<any[]>(`${environment.apiUrl}/api/resto/image-edit`, data, {headers}
+    );
+  }
 
 }

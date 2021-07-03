@@ -69,10 +69,10 @@
       </table>
     </div>
   </ng-container>
-  <div *ngIf="plats.length == 0">
+  <ng-container *ngIf="plats.length === 0">
     <div class="container " style="background-color: #fff;">
       <h2 class="py-3 text-center">Suprise, votre panier est vide ! <a class="btn btn-link" (click)="backClicked()" > Retour</a></h2>
 
     </div>
-  </div>
+  </ng-container>
 </div>

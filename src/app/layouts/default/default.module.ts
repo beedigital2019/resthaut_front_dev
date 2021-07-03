@@ -31,6 +31,7 @@ import { AddRestoComponent } from 'src/app/pages/resto/add-resto/add-resto.compo
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -45,9 +46,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AddCommandeComponent,
     AddTablesComponent,
     ListTablesComponent,
-    AddRestoComponent
+    AddRestoComponent,
   ],
   imports: [
+    BrowserModule,
     CommonModule,
     RouterModule,
     SharedModule,
@@ -69,7 +71,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatDatepickerModule,
     MatCheckboxModule,
     MatExpansionModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatFormFieldModule,
   ]
 })
 export class DefaultModule { }

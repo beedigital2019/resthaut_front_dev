@@ -42,6 +42,7 @@ import { EditClientComponent } from './pages/profil/edit-client/edit-client.comp
 import { PasswordComponent } from './pages/resto/password/password.component';
 import { EditGerantComponent } from './pages/resto/edit-gerant/edit-gerant.component';
 import { ToastrModule } from 'ngx-toastr';
+import { EditImageRestoComponent } from './pages/resto/edit-image-resto/edit-image-resto.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,7 @@ import { ToastrModule } from 'ngx-toastr';
     EditClientComponent,
     PasswordComponent,
     EditGerantComponent,
+    EditImageRestoComponent,
 
     ],
   entryComponents: [
