@@ -23,11 +23,15 @@ export class MenuService {
     return this.http.post<any[]>(`${environment.apiUrl}/api/menu/add`, data, {headers}
     );
   }
-  putMenu(id: number): Observable<any> {
+  getId(id: number): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
     return this.http.put(`${environment.apiUrl}/api/menus/` + id, { headers});
   }
   deleteMenu(id: number){
     return this.http.delete<any[]>(`${environment.apiUrl}/api/menus/` + id);
+  }
+  updateMenu(id: number, data: any): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.put(`${environment.apiUrl}/api/menus/` + id, data , { headers});
   }
 }

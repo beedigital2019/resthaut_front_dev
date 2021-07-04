@@ -1,3 +1,4 @@
+import { EditMenuComponent } from './../../pages/menu/edit-menu/edit-menu.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AddCommandeComponent } from './../../pages/commande/add-commande/add-commande.component';
@@ -47,6 +48,7 @@ import { BrowserModule } from '@angular/platform-browser';
     AddTablesComponent,
     ListTablesComponent,
     AddRestoComponent,
+    EditMenuComponent
   ],
   imports: [
     BrowserModule,

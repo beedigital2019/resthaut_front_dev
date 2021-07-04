@@ -29,7 +29,7 @@ export class SidebarComponent implements OnInit {
     // this.image = JSON.parse(localStorage.getItem('image'));
     // this.nomResto = JSON.parse(localStorage.getItem('nomResto'));
     this.rs.getRestoByUserConnected().subscribe( data => {
-      console.log(data);
+      // console.log(data);
       this.resto = data;
     });
   }

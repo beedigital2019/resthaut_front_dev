@@ -44,5 +44,7 @@ export class ListMenuComponent implements OnInit {
       });
     }
   }
-
+  getId(id: number){
+    this.route.navigate(['dashboard/menu/edit/', id]);
+  }
 }
