@@ -6,12 +6,12 @@
     height: 150px;
     object-fit: cover ;
     //border: 1px solid #333;
-    position: relative;
+    //position: relative;
     z-index: 0;
   }
   .bloc-icon-image{
     background-color: rgb(200, 200, 200);
-    position: absolute;
+    position:sticky;
     display: block;
     padding: 2px;
     width: 40px;

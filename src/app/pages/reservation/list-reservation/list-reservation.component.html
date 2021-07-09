@@ -139,7 +139,7 @@
           <th scope="row"> {{reservation.id}} </th>
           <td> {{reservation.user.nomComplet}}</td>
           <td>  {{reservation.user.telephone}}  </td>
-          <td>  {{reservation.user.adresse}}  </td>
+          <td>  {{reservation.user.adresseDomicile}}  </td>
 
           <td>
             <div *ngIf="reservation.isValid; else elseBlock">
