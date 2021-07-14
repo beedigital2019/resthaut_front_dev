@@ -1,7 +1,6 @@
 import { EditMenuComponent } from './../../pages/menu/edit-menu/edit-menu.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AddCommandeComponent } from './../../pages/commande/add-commande/add-commande.component';
 import { AddPlatComponent } from './../../pages/plat/add-plat/add-plat.component';
 import { AddMenuComponent } from './../../pages/menu/add-menu/add-menu.component';
 import { ListMenuComponent } from './../../pages/menu/list-menu/list-menu.component';
@@ -44,7 +43,6 @@ import { BrowserModule } from '@angular/platform-browser';
     ListReservationComponent,
     AddMenuComponent,
     AddPlatComponent,
-    AddCommandeComponent,
     AddTablesComponent,
     ListTablesComponent,
     AddRestoComponent,

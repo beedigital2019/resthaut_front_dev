@@ -5,6 +5,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import {Location} from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-reservation-client',
   templateUrl: './add-reservation-client.component.html',
@@ -23,7 +24,8 @@ export class AddReservationClientComponent implements OnInit {
                private route: ActivatedRoute,
                private rs: RestoService,
                private ts: TablesService,
-               private _location: Location
+               private _location: Location,
+               private toastr: ToastrService,
                ) { }
   reservationForm: FormGroup;
   get f() { return this.reservationForm.controls; }
@@ -71,12 +73,14 @@ export class AddReservationClientComponent implements OnInit {
     console.log(reservations);
 
     this.res.AddReservationByClient(reservations).subscribe( data => {
-      alert('Votre reservation a été bien ajouté avec success');
+      // alert('Votre reservation a été bien ajouté avec success');
+      this.toastr.success('Votre reservation a été bien ajouté avec success', '');
       return this.router.navigate(['list/resto/', this.resto]);
     }, error => {
       this.errors = error;
-      // alert(error);
-
+      this.toastr.error('Oups, une erreur s\'est produite.', '', {
+        timeOut: 3000,
+      });
     });
 
   }

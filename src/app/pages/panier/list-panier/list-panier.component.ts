@@ -15,6 +15,7 @@ import {Location} from '@angular/common';
 export class ListPanierComponent implements OnInit {
   roles: any;
   totalCart: any;
+  restoId: any;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -34,11 +35,14 @@ export class ListPanierComponent implements OnInit {
   ngOnInit(): void {
     this.plats = JSON.parse(localStorage.getItem('cart'));
     this.roles = JSON.parse(localStorage.getItem('roles'));
+    this.restoId = JSON.parse(localStorage.getItem('restoId'));
     // console.log(this.plats);
     // tslint:disable-next-line: prefer-for-of
-    this.plats.forEach((element) => {
-      this.total += (element.quantite * element.prix);
-    });
+    if (this.plats) {
+      this.plats.forEach((element) => {
+        this.total += (element.quantite * element.prix);
+      });
+    }
   }
   // tslint:disable-next-line: typedef
   removeCart(id){
@@ -73,6 +77,11 @@ export class ListPanierComponent implements OnInit {
     for (let i = 0; i < this.plats.length; i++) {
       const element = this.plats[i];
       if (this.plats[i].id === id) {
+        if (this.plats[i].quantite === 0){
+          this.plats.splice(i, 1);
+          localStorage.setItem('cart', JSON.stringify(this.plats));
+          return this.router.navigate(['/list/resto/', this.restoId ]);
+        }
         this.plats[i].quantite--;
         localStorage.setItem('cart', JSON.stringify(this.plats));
         const currentUrl = this.router.url;

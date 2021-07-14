@@ -3,6 +3,7 @@ import { MenuService } from './../../../services/menu/menu.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-menu',
@@ -11,7 +12,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class ListMenuComponent implements OnInit {
 
-  constructor(private ms: MenuService, private route: Router) { }
+  constructor(private ms: MenuService,
+              private router: Router ,
+              private toastr: ToastrService) { }
 
   menus = [];
   dataMenus: any;
@@ -39,12 +42,15 @@ export class ListMenuComponent implements OnInit {
   deleteMenu(id: number) {
     if ( confirm('Etes vous  sur de vouloir supprimer cet menu')) {
       this.ms.deleteMenu(id).subscribe(data => {
-        console.log(data);
-        location.reload();
+        const currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
+        this.toastr.success('Votre menu a été bien supprimé', '');
       });
     }
   }
   getId(id: number){
-    this.route.navigate(['dashboard/menu/edit/', id]);
+    this.router.navigate(['dashboard/menu/edit/', id]);
   }
 }

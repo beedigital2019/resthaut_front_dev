@@ -57,7 +57,7 @@ export class EditClientComponent implements OnInit {
       this.toastr.error('Oups, une erreur s\'est produite.', '', {
         timeOut: 3000,
       });
-      alert(error);
+      // alert(error);
     });
   }
 

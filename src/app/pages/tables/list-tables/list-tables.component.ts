@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-tables',
@@ -11,7 +13,10 @@ import { ViewChild } from '@angular/core';
 })
 export class ListTablesComponent implements OnInit {
 
-  constructor(private ts: TablesService) { }
+  constructor(private ts: TablesService,
+              private router: Router,
+              private toastr: ToastrService
+    ) { }
   tables = [];
   dataTables: any;
   roles: string;
@@ -40,8 +45,11 @@ export class ListTablesComponent implements OnInit {
   deleteTable(id: number) {
     if ( confirm('Etes vous  sur de vouloir supprimer cette table')) {
       this.ts.deleteTable(id).subscribe(data => {
-        console.log(data);
-        location.reload();
+        const currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
+        this.toastr.success('Votre table a été bien supprimé', '');
       });
     }
   }

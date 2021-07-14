@@ -5,6 +5,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Plat } from 'src/app/model/plat';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-plat',
@@ -15,7 +16,8 @@ export class ListPlatComponent implements OnInit {
 
   constructor(private ps: PlatService,
               private router: Router ,
-              private sanitizer: DomSanitizer) { }
+              private toastr: ToastrService
+            ) { }
 
   plats = [];
   dataPlats: any;
@@ -46,8 +48,14 @@ export class ListPlatComponent implements OnInit {
   deleteMenu(id: number) {
     if ( confirm('Etes vous  sur de vouloir supprimer cet plat')) {
       this.ps.deletePlat(id).subscribe(data => {
-        console.log(data);
-        location.reload();
+        const currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
+        this.toastr.success('Votre plat a été bien supprimé', '');
+      }, error => {
+        console.log(error);
+
       });
     }
   }

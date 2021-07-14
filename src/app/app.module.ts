@@ -19,7 +19,6 @@ import { JwtInterceptorService } from './services/helpers/jwt-interceptor.servic
 import { DefaultComponent } from './layouts/default/default.component';
 import { CommonModule } from '@angular/common';
 import { AccueilComponent } from './pages/accueil/accueil.component';
-import { ListRestoComponent } from './pages/resto/list-resto/list-resto.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { DetailsRestoComponent } from './pages/resto/details-resto/details-resto.component';
@@ -43,12 +42,15 @@ import { PasswordComponent } from './pages/resto/password/password.component';
 import { EditGerantComponent } from './pages/resto/edit-gerant/edit-gerant.component';
 import { ToastrModule } from 'ngx-toastr';
 import { EditImageRestoComponent } from './pages/resto/edit-image-resto/edit-image-resto.component';
+import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
+import {MatButtonModule} from '@angular/material/button';
+import { AddCommandeComponent } from './pages/commande/add-commande/add-commande.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AccueilComponent,
-    ListRestoComponent,
     DetailsRestoComponent,
     EditPlatComponent,
     ListPanierComponent,
@@ -60,8 +62,9 @@ import { EditImageRestoComponent } from './pages/resto/edit-image-resto/edit-ima
     PasswordComponent,
     EditGerantComponent,
     EditImageRestoComponent,
-
-    ],
+    NavBarComponent,
+    AddCommandeComponent
+  ],
   entryComponents: [
     DialogComponent,
   ],
@@ -102,6 +105,7 @@ import { EditImageRestoComponent } from './pages/resto/edit-image-resto/edit-ima
       progressBar: true,
       progressAnimation: 'increasing'
     }),
+    MatButtonModule
   ],
   providers: [
   DefaultComponent, {

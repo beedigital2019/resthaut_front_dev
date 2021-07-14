@@ -1,9 +1,11 @@
 import { ClientService } from './../../services/client/client.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login/login.service';
 import { MustMatch } from 'src/app/services/helpers/must-match.service';
+import { ToastrService } from 'ngx-toastr';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -12,13 +14,19 @@ import { MustMatch } from 'src/app/services/helpers/must-match.service';
 export class DialogComponent implements OnInit {
   formConnexion: FormGroup;
   inscriptionForm: FormGroup;
-  errorMessage: string;
+  errorMessageLogin: string;
+  errorMessageRegister: string;
   submitted: boolean;
   roles: any;
+  currentRoute: string;
+  restoId: any;
   constructor(private ls: LoginService,
               private router: Router,
               private formBuilder: FormBuilder ,
               private cs: ClientService,
+              private toastr: ToastrService,
+              public dialogRef: MatDialogRef<DialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogComponent
               ) { }
 
   ngOnInit(): void {
@@ -36,6 +44,10 @@ export class DialogComponent implements OnInit {
     },
       {  validator: MustMatch('password', 'confirmPassword') }
     );
+    this.restoId = JSON.parse(localStorage.getItem('restoId'));
+    this.currentRoute = this.router.url;
+    console.log(this.currentRoute);
+
   }
   get f() { return this.formConnexion.controls; }
   get g() { return this.inscriptionForm.controls; }
@@ -53,12 +65,20 @@ export class DialogComponent implements OnInit {
     this.ls.login(user).subscribe(
       data => {
         this.roles = JSON.parse(localStorage.getItem('roles'));
-        alert(JSON.stringify('Authentification réussi avec success'));
-        location.reload();
+        this.dialogRef.close();
+        this.toastr.success('Authentification réussi avec succes.', '');
+        if (this.currentRoute === '/list/resto/28') {
+          return this.router.navigate(['reservation/', this.restoId]);
+        }
+        if (this.currentRoute === '/panier') {
+          return this.router.navigate(['commande']);
+        }
       },
       error => {
-      this.errorMessage = 'username ou mot de passe incorrect';
-      // console.log('username ou mot de passe incorrect');
+      this.errorMessageLogin = 'username ou mot de passe incorrect';
+      this.toastr.error('Oups, une erreur s\'est produite.', '', {
+        timeOut: 3000,
+      });
     });
 
   }
@@ -74,13 +94,38 @@ export class DialogComponent implements OnInit {
         password: this.inscriptionForm.value.password,
         adresseDomicile: this.inscriptionForm.value.adresseDomicile,
     };
-    this.cs.postClient(users).subscribe( data => {
-      alert(JSON.stringify('Votre compte a été crée avec succes.'));
-      //this.inscriptionForm.reset();
-    }, errors => {
-      console.log(errors);
+    const  user = {
+      username: users.username,
+      password: users.password,
+    };
 
-      alert(JSON.stringify(errors));
+    this.cs.postClient(users).subscribe( data => {
+      // alert(JSON.stringify('Votre compte a été crée avec succes.'));
+      this.toastr.success('Votre compte a été crée avec succes.', '');
+      this.ls.login(user).subscribe(
+        data => {
+          this.roles = JSON.parse(localStorage.getItem('roles'));
+          this.dialogRef.close();
+          if (this.currentRoute === '/list/resto/28') {
+            return this.router.navigate(['reservation/', this.restoId]);
+          }
+          if (this.currentRoute === '/panier') {
+            return this.router.navigate(['commande']);
+          }
+        },
+        error => {
+        this.errorMessageLogin = 'username ou mot de passe incorrect';
+        this.toastr.error('Oups, une erreur s\'est produite.', '', {
+          timeOut: 3000,
+        });
+      });
+    }, errors => {
+      // console.log(errors);
+      // alert(JSON.stringify(errors));
+      this.errorMessageRegister = JSON.stringify(errors);
+      this.toastr.error('Oups, une erreur s\'est produite.', '', {
+        timeOut: 3000,
+      });
     });
   }
 }

@@ -1,23 +1,7 @@
-<!-- <div class="col-sm-6 col-md-3 mt-4"  *ngFor="let plat of plats;">
-  <div class="border border-dark rounded p-2 clearfix">
-      <h3>
-          {{ plat.nomPlat }}
-          -
-          {{ plat.prix }}
-          FCA
-      </h3>
-      <img width="100%" height="150" class="card-img-top card-img-plat" [src]="urlimg+plat.image"  alt="Image de {{ plats.nomPlat }}">
-      <hr>
-      <a  class="btn btn-panier  float-right">
-        <mat-icon >shopping_cart</mat-icon>
-          Ajouter
-      </a>
-  </div>
-
-</div> -->
+<app-nav-bar></app-nav-bar>
 <div class="panier-list">
-  <ng-container *ngIf="plats.length > 0 "  >
-    <div  class="container" style="background-color: #fff;">
+  <div>
+    <div *ngIf="plats; else elseBlock" class="container" style="background-color: #fff;">
       <h2>Votre panier</h2>
       <table class="table">
         <thead>
@@ -30,7 +14,7 @@
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody *ngFor="let plat of plats;">
+        <tbody  *ngFor="let plat of plats;">
           <tr>
             <th scope="row">{{ plat.id }}</th>
             <td>{{ plat.nomPlat }}</td>
@@ -44,7 +28,6 @@
                 <span><button class="btn btn-danger" (click)="removeCart(plat.id)" >X</button></span>
               </div>
             </td>
-
           </tr>
         </tbody>
         <tfoot>
@@ -62,17 +45,15 @@
                   Passer la commande
                 </a>
               </ng-template>
-              <!-- <button (click)="openDialog()" class="btn btn-ang" style="width: 200px;">Passer la commande</button> -->
             </td>
         </tr>
         </tfoot>
       </table>
     </div>
-  </ng-container>
-  <ng-container *ngIf="plats.length === 0">
+  </div>
+  <ng-template #elseBlock>
     <div class="container " style="background-color: #fff;">
       <h2 class="py-3 text-center">Suprise, votre panier est vide ! <a class="btn btn-link" (click)="backClicked()" > Retour</a></h2>
-
     </div>
-  </ng-container>
+  </ng-template>
 </div>

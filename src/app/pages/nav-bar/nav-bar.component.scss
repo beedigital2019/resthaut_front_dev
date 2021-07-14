@@ -1,0 +1,34 @@
+mat-toolbar{
+  background-color: #ffa800;
+  .spacer{
+    flex: 1 1 auto;
+  }
+  .resto_nom{
+    font-size: 1.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    a{
+      border: none !important;
+    }
+  }
+  a{
+    font-size: 0.9em;
+    margin: 5px;
+    border: 1px solid #333 !important;
+    &:hover{
+      color: #ffa800;
+      background-color: #333;
+      text-decoration: none;
+    }
+    .panier-count{
+      font-size: 0.8em;
+      border: 1px solid #fff;;
+      background-color: #fff;
+      border-radius: 100%;
+      font-weight: bold;
+      width: 25px;
+      height: 25px;
+
+    }
+  }
+}

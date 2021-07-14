@@ -1,20 +1,21 @@
-import { LoginService } from './../../../services/login/login.service';
-import { DialogComponent } from './../../dialog/dialog.component';
-import { MenuService } from 'src/app/services/menu/menu.service';
-import { PanierService } from './../../../services/panier.service';
-import { RestoService } from './../../../services/resto/resto.service';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Plat } from 'src/app/model/plat';
 import { BehaviorSubject } from 'rxjs';
-import {MatDialog} from '@angular/material/dialog';
+import { Plat } from 'src/app/model/plat';
+import { LoginService } from 'src/app/services/login/login.service';
+import { MenuService } from 'src/app/services/menu/menu.service';
+import { PanierService } from 'src/app/services/panier.service';
+import { RestoService } from 'src/app/services/resto/resto.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
-  selector: 'app-details-resto',
-  templateUrl: './details-resto.component.html',
-  styleUrls: ['./details-resto.component.scss']
+  selector: 'app-nav-bar',
+  templateUrl: './nav-bar.component.html',
+  styleUrls: ['./nav-bar.component.scss']
 })
-export class DetailsRestoComponent implements OnInit {
+export class NavBarComponent implements OnInit {
+
   id: number;
   resto: any;
   menus: any;
@@ -23,6 +24,8 @@ export class DetailsRestoComponent implements OnInit {
   urlimg = 'data:image/png;base64,';
   roles: any;
   nomComplet: string;
+  idR: void;
+  restoId: any;
   constructor( private rs: RestoService,
                private route: ActivatedRoute,
                private router: Router,
@@ -36,10 +39,10 @@ export class DetailsRestoComponent implements OnInit {
 
   ngOnInit(): void {
     // this.roles = JSON.parse(localStorage.getItem('roles'));
-    // this.nomComplet = JSON.parse(localStorage.getItem('nomComplet'));
+    this.nomComplet = JSON.parse(localStorage.getItem('nomComplet'));
     this.id = this.route.snapshot.params.id;
-    localStorage.setItem('restoId', JSON.stringify(this.id));
-    this.rs.detailsResto(this.id).subscribe( data => {
+    this.restoId = JSON.parse(localStorage.getItem('restoId'));
+    this.rs.detailsResto(this.restoId).subscribe( data => {
       this.resto = data;
     });
     this.ms.getAllMenuByrestoId(this.id).subscribe( data => {
@@ -79,10 +82,12 @@ export class DetailsRestoComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.clear();
     this.ls.logout();
-    location.reload();
-    return this.router.navigate(['list/resto/', this.resto]);
+    return this.router.navigate(['/']);
   }
   getProfil() {
     return this.router.navigate(['profil/client']);
+  }
+  getRelead(){
+    return this.router.navigate(['/list/resto/', this.restoId ]);
   }
 }
