@@ -15,13 +15,10 @@ export class DashboardComponent implements OnInit {
   data: any;
   barChart: Chart;
   lineChart: Chart;
+  roles: any;
   dayOfC: any;
   dayOfR: any;
   ngOnInit(): void {
-    // this.cs.getCount().subscribe( data => {
-    //   this.data = data;
-    //   this.day = data.dayOfCmd;
-    // });
     Chart.register(...registerables);
     this.getBarChart();
     this.getLineChart();

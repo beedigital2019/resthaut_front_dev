@@ -38,6 +38,7 @@ export class ListPanierComponent implements OnInit {
     this.restoId = JSON.parse(localStorage.getItem('restoId'));
     // console.log(this.plats);
     // tslint:disable-next-line: prefer-for-of
+    console.log(this.plats);
     if (this.plats) {
       this.plats.forEach((element) => {
         this.total += (element.quantite * element.prix);
@@ -50,6 +51,9 @@ export class ListPanierComponent implements OnInit {
       if (this.plats[i].id === id) {
         this.plats.splice(i, 1);
         localStorage.setItem('cart', JSON.stringify(this.plats));
+        if (this.plats.length === 0) {
+          return this.router.navigate(['/list/resto/', this.restoId ]);
+        }
         const currentUrl = this.router.url;
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
@@ -80,7 +84,9 @@ export class ListPanierComponent implements OnInit {
         if (this.plats[i].quantite === 0){
           this.plats.splice(i, 1);
           localStorage.setItem('cart', JSON.stringify(this.plats));
-          return this.router.navigate(['/list/resto/', this.restoId ]);
+          if (this.total === 0) {
+            return this.router.navigate(['/list/resto/', this.restoId ]);
+          }
         }
         this.plats[i].quantite--;
         localStorage.setItem('cart', JSON.stringify(this.plats));

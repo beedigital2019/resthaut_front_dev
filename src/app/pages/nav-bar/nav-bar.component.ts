@@ -73,8 +73,11 @@ export class NavBarComponent implements OnInit {
   isRoleClient() {
     this.roles = JSON.parse(localStorage.getItem('roles'));
     if (this.roles) {
-      if (this.roles['0'] === 'ROLE_CLIENT' || this.roles['0'] === 'ROLE_GERANT') {
+      if (this.roles['0'] === 'ROLE_CLIENT') {
         return true;
+      }
+      if (this.roles['0'] === 'ROLE_GERANT') {
+        return false;
       }
     }
   }

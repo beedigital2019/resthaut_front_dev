@@ -67,11 +67,15 @@ export class DialogComponent implements OnInit {
         this.roles = JSON.parse(localStorage.getItem('roles'));
         this.dialogRef.close();
         this.toastr.success('Authentification réussi avec succes.', '');
-        if (this.currentRoute === '/list/resto/28') {
+        if (this.currentRoute === '/list/resto/' + this.restoId && this.roles['0'] === 'ROLE_CLIENT') {
+          console.log(this.currentRoute);
           return this.router.navigate(['reservation/', this.restoId]);
         }
-        if (this.currentRoute === '/panier') {
+        if (this.currentRoute === '/panier' && this.roles['0'] === 'ROLE_CLIENT') {
           return this.router.navigate(['commande']);
+        }
+        if (this.roles['0'] === 'ROLE_GERANT') {
+          return this.router.navigate(['dashboard']);
         }
       },
       error => {
@@ -106,11 +110,14 @@ export class DialogComponent implements OnInit {
         data => {
           this.roles = JSON.parse(localStorage.getItem('roles'));
           this.dialogRef.close();
-          if (this.currentRoute === '/list/resto/28') {
+          if (this.currentRoute === '/list/resto/' + this.restoId && this.roles['0'] === 'ROLE_CLIENT') {
             return this.router.navigate(['reservation/', this.restoId]);
           }
-          if (this.currentRoute === '/panier') {
+          if (this.currentRoute === '/panier' && this.roles['0'] === 'ROLE_CLIENT') {
             return this.router.navigate(['commande']);
+          }
+          if (this.roles['0'] === 'ROLE_GERANT') {
+            return this.router.navigate(['dashboard']);
           }
         },
         error => {

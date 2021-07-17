@@ -14,8 +14,10 @@ export class HeaderComponent implements OnInit {
   constructor(private ls: LoginService, private route: Router, private toastr: ToastrService) { }
   idGerant: number;
   ngOnInit(): void {
+    if (localStorage.idGerant === 'undefined') {
+      this.route.navigate(['/']);
+    }
     this.idGerant = JSON.parse(localStorage.getItem('idGerant'));
-    // console.log(this.idGerant);
   }
   toggleSideBar(){
     this.toggleSideBarForMe.emit();
@@ -28,6 +30,9 @@ export class HeaderComponent implements OnInit {
     return this.route.navigate(['/']);
   }
   onHome() {
+    localStorage.removeItem('token');
+    localStorage.clear();
+    this.ls.logout();
     return this.route.navigate(['/']);
   }
   onUpdate() {

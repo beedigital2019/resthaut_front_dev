@@ -1,7 +1,8 @@
 <mat-toolbar class="mat-elevation-z8">
   <div class="container">
     <div class="d-flex">
-      <span class="resto_nom mt-2" (click)="getRelead()">
+      <mat-icon mat-button class="btn-home mt-2"  routerLink="/">home</mat-icon>
+      <span mat-button class="resto_nom mt-2" (click)="getRelead()">
         {{ resto.nomResto }}
       </span>
       <div class="spacer"></div>
