@@ -25,6 +25,7 @@ import { AddPlatComponent } from './pages/plat/add-plat/add-plat.component';
 import { AddTablesComponent } from './pages/tables/add-tables/add-tables.component';
 import { ListTablesComponent } from './pages/tables/list-tables/list-tables.component';
 import { ProfilClientComponent } from './pages/profil/profil-client/profil-client.component';
+import { EditTablesComponent } from './pages/tables/edit-tables/edit-tables.component';
 
 const routes: Routes = [
   { path: '' , component: AccueilComponent },
@@ -49,6 +50,7 @@ const routes: Routes = [
       {path: 'dashboard/menu/add', component: AddMenuComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/plat/edit/:id', component: EditPlatComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/menu/edit/:id', component: EditMenuComponent, canActivate: [LoginGuardService]},
+      {path: 'dashboard/table/edit/:id', component: EditTablesComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/tables/add', component: AddTablesComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/tables/list', component: ListTablesComponent, canActivate: [LoginGuardService]},
       {path: 'dashboard/update-password', component: PasswordComponent, canActivate: [LoginGuardService] },

@@ -20,7 +20,7 @@
         <mat-header-cell *matHeaderCellDef >ACTION</mat-header-cell  >
         <mat-header-cell *matCellDef="let row " >
           <div class="d-flex justify-content-around ">
-            <button mat-mini-fab color="warn" >
+            <button mat-mini-fab color="warn" routerLink="/dashboard/table/edit/{{row.id}}" >
                 <mat-icon>border_color </mat-icon>
               </button>
               <br>

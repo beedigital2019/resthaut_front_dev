@@ -63,7 +63,7 @@ import { AddCommandeComponent } from './pages/commande/add-commande/add-commande
     EditGerantComponent,
     EditImageRestoComponent,
     NavBarComponent,
-    AddCommandeComponent
+    AddCommandeComponent,
   ],
   entryComponents: [
     DialogComponent,

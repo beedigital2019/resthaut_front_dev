@@ -53,4 +53,7 @@ export class ListTablesComponent implements OnInit {
       });
     }
   }
+  getId(id: number) {
+    this.router.navigate(['/dashboard/table/edit', id]);
+  }
 }

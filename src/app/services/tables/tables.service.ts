@@ -32,4 +32,7 @@ export class TablesService {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
     return this.http.put(`${environment.apiUrl}/api/tables/` + id, { headers});
   }
+  putTable(id: number, data): Observable<any> {
+    return this.http.put(`${environment.apiUrl}/api/tables/${id}`, data);
+  }
 }

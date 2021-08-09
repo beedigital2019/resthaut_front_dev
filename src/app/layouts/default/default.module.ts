@@ -32,6 +32,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { BrowserModule } from '@angular/platform-browser';
+import { EditTablesComponent } from 'src/app/pages/tables/edit-tables/edit-tables.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { BrowserModule } from '@angular/platform-browser';
     AddTablesComponent,
     ListTablesComponent,
     AddRestoComponent,
-    EditMenuComponent
+    EditMenuComponent,
+    EditTablesComponent
   ],
   imports: [
     BrowserModule,
