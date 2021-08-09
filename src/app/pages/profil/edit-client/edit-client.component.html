@@ -19,6 +19,7 @@
                 <input matInput formControlName="username" placeholder="Placeholder" >
                 <mat-error *ngIf="submitted && f.username.errors" class="invalid-feedback">
                   <mat-error *ngIf="f.username.errors.required">Veuillez taper le nom d'utilisateur </mat-error>
+                  <mat-error *ngIf="f.username.errors.pattern">le nom d'utilisateur ne doit pas avoir d'esapce ou caractère numérique  </mat-error>
                 </mat-error>
               </mat-form-field>
               <mat-form-field appearance="outline">

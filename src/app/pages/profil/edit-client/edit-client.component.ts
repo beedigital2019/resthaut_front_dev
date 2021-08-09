@@ -30,8 +30,8 @@ export class EditClientComponent implements OnInit {
     });
     this.clientForm = this.formBuilder.group({
       nomComplet: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
-      adresseDomicile: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
-      username: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
+      adresseDomicile: ['', [Validators.required, Validators.pattern('[a-zA-Z 0-9 ]*'), Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(3)]],
       telephone: ['',  [Validators.required,  Validators.pattern('^[77,78,76,70,75]{2}[0-9]{7}$')]],
     });
   }

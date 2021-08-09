@@ -12,7 +12,7 @@
         <span>Voir le panier</span>
       </a>
       <div *ngIf="isRoleClient(); else elseBlock">
-        <a mat-button routerLink="/reservation/28">
+        <a mat-button routerLink="/reservation/{{restoId}}">
           <mat-icon>subtitles</mat-icon>
           Reserver une table
         </a>

@@ -26,7 +26,7 @@
             <tr>
               <th scope="row">{{ res.id }}</th>
               <td>{{ res.createdAt | date: 'd MMM y'}}</td>
-              <td>{{ res.heure | date: 'hh:mm'}}</td>
+              <td>{{ res.heure | date: 'H:mm'}}</td>
               <td *ngIf="res.isValid == false" >En cours...</td>
               <td *ngIf="res.isValid == true" >Validé...</td>
               <div *ngFor="let tables of res.tables">

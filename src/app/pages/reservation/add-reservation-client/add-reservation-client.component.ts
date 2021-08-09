@@ -18,6 +18,7 @@ export class AddReservationClientComponent implements OnInit {
   errors: any;
   // tslint:disable-next-line: variable-name
   _id: any;
+  restoId: any;
   constructor( private res: ReservationService,
                private router: Router,
                private formBuilder: FormBuilder,
@@ -31,6 +32,7 @@ export class AddReservationClientComponent implements OnInit {
   get f() { return this.reservationForm.controls; }
   submitted = false;
   ngOnInit(): void {
+    this.restoId = JSON.parse(localStorage.getItem('restoId'));
     this.reservationForm = this.formBuilder.group({
       createdAt: ['', [Validators.required, ]],
       heure: ['', [Validators.required ]],
@@ -39,11 +41,12 @@ export class AddReservationClientComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.rs.detailsResto(params.id).subscribe(data => {
         this.resto = data.id;
+        console.log(this.resto);
 
       });
     });
     this.route.params.subscribe(params => {
-      this.ts.getAllTablesByRestoId(params.id).subscribe(data => {
+      this.ts.getAllTablesByRestoId(this.restoId).subscribe(data => {
         this.dataTables  = data;
         console.log(this.dataTables);
 
@@ -75,7 +78,7 @@ export class AddReservationClientComponent implements OnInit {
     this.res.AddReservationByClient(reservations).subscribe( data => {
       // alert('Votre reservation a été bien ajouté avec success');
       this.toastr.success('Votre reservation a été bien ajouté avec success', '');
-      return this.router.navigate(['list/resto/', this.resto]);
+      return this.router.navigate(['list/resto/', this.restoId]);
     }, error => {
       this.errors = error;
       this.toastr.error('Oups, une erreur s\'est produite.', '', {

@@ -30,9 +30,12 @@
         <td> {{commande.numCommande}} </td>
         <td> {{commande.user.nomComplet}}</td>
         <td>  {{commande.user.telephone}}  </td>
-        <td>  {{commande.user.adresse}}  </td>
+        <td>  {{commande.user.adresseDomicile}}  </td>
         <div *ngFor="let plcmd of commande.platCommandes" >
-          <td >{{plcmd.id}} - {{plcmd.quantite}}</td>
+          <td>
+            <strong>Nom → </strong>{{plcmd.plat.nomPlat}}
+            <strong>Qty → </strong>{{plcmd.quantite}}
+          </td>
 
         </div>
         <td>
@@ -65,5 +68,10 @@
       <h2 class="py-3 text-center">il n'y a pas de commande !</h2>
     </div>
   </ng-container>
+</div>
+<div *ngFor="let test of plat" >
+  {{test.plat.id}}
+  {{test.plat.nomPlat}}
+  {{test.plat.prix}}
 </div>
 </mat-card>

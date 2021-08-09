@@ -39,6 +39,9 @@ export class HeaderComponent implements OnInit {
     return this.route.navigate(['dashboard/update-password']);
   }
   getId(id: number){
+    if (id === null) {
+      this.route.navigate(['login']);
+    }
     this.route.navigate(['dashboard/edit/gerant/', id]);
   }
 }

@@ -32,7 +32,7 @@ export class LoginService {
         localStorage.setItem('roles', JSON.stringify(decodedToken.roles));
         localStorage.setItem('username', JSON.stringify(decodedToken.username));
         localStorage.setItem('nomResto', JSON.stringify(decodedToken.nomResto));
-        localStorage.setItem('image', JSON.stringify(decodedToken.image));
+        // localStorage.setItem('image', JSON.stringify(decodedToken.image));
         localStorage.setItem('telephone', JSON.stringify(decodedToken.telephone));
         localStorage.setItem('adresse', JSON.stringify(decodedToken.adresse));
         localStorage.setItem('nomComplet', JSON.stringify(decodedToken.nomComplet));

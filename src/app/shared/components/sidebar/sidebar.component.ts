@@ -25,7 +25,7 @@ export class SidebarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // this.roles = JSON.parse(localStorage.getItem('roles'));
+    this.roles = JSON.parse(localStorage.getItem('roles'));
     // this.image = JSON.parse(localStorage.getItem('image'));
     // this.nomResto = JSON.parse(localStorage.getItem('nomResto'));
     this.rs.getRestoByUserConnected().subscribe( data => {
@@ -42,6 +42,11 @@ export class SidebarComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
       });
+    }
+  }
+  isGerant(){
+    if (this.roles['0'] === 'ROLE_GERANT') {
+      return true;
     }
   }
 }
