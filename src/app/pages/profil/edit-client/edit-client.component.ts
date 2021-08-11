@@ -46,7 +46,7 @@ export class EditClientComponent implements OnInit {
     const  users = {
       nomComplet: this.clientForm.value.nomComplet,
       username: this.clientForm.value.username,
-      telephone: this.clientForm.value.telephone,
+      telephone: parseInt(this.clientForm.value.telephone),
       adresseDomicile: this.clientForm.value.adresseDomicile,
     };
     this.cs.updateClient(users, this.route.snapshot.params.id).subscribe( data => {
